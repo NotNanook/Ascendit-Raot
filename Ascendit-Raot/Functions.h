@@ -7,7 +7,7 @@ public:
 	uintptr_t baseAddress;
 	uintptr_t dllGameBaseOffset;
 
-	Functions(uintptr_t baseAddress, uintptr_t dllGameBaseOffset);
+	Functions(uintptr_t baseAddress);
 
 	typedef CharacterObject* (__thiscall* _get_Character)(void* playerMain);
 	_get_Character get_Character;

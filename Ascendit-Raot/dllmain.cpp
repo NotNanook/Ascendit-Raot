@@ -8,18 +8,12 @@ DWORD WINAPI Thread(HMODULE hModule)
     FILE* f;
     freopen_s(&f, "CONOUT$", "w", stdout);
 
-    uintptr_t baseModuleAddress = (uintptr_t)GetModuleHandleW(L"GameAssembly.dll");
-    uintptr_t dllGameBaseOffset = baseModuleAddress + 0x0231D310;
-
-    Functions functions = Functions(baseModuleAddress, dllGameBaseOffset);
+    Functions functions = Functions((uintptr_t)GetModuleHandleW(L"GameAssembly.dll"));
     cheatManager.init();
 
     while (true)
     {
-        if (GetAsyncKeyState(VK_NUMPAD0) & 1)
-        {
-            break;
-        }
+        if (GetAsyncKeyState(VK_NUMPAD0) & 1) { break; }
 
         cheatManager.onUpdate(&functions);
 
