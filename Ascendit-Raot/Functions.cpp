@@ -9,4 +9,5 @@ Functions::Functions(uintptr_t baseAddress)
 	getTransform = (_getTransform)(baseAddress + 0x524F70);
 	getPosition = (_getPosition)(baseAddress + 0x1106130);
 	getParryData = (_getParryData)(baseAddress + 0x45F2F0);
+	startAttack = (_startAttack)(baseAddress + 0x468C70);
 }

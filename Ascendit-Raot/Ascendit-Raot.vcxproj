@@ -159,6 +159,7 @@
     <ClInclude Include="Functions.h" />
     <ClInclude Include="InfiniteGas.h" />
     <ClInclude Include="InfiniteStress.h" />
+    <ClInclude Include="NoShootCooldown.h" />
     <ClInclude Include="Structures.h" />
     <ClInclude Include="hook.h" />
     <ClInclude Include="mem.h" />
@@ -175,6 +176,7 @@
     <ClCompile Include="hook.cpp" />
     <ClCompile Include="InfiniteGas.cpp" />
     <ClCompile Include="InfiniteStress.cpp" />
+    <ClCompile Include="NoShootCooldown.cpp" />
     <ClCompile Include="mem.cpp" />
     <ClCompile Include="Option.cpp" />
     <ClCompile Include="pch.cpp">

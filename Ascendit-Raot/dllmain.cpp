@@ -18,7 +18,7 @@ DWORD WINAPI Thread(HMODULE hModule)
         cheatManager.onUpdate(&functions);
 
         Sleep(5);
-    }
+    }  
 
     FreeConsole();
     if(f) fclose(f);
