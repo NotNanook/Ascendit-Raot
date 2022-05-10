@@ -165,12 +165,12 @@ class CharacterObject
 {
 public:
 	char pad_0000[104]; //0x0000
-	class Transform* rigRootTransform; //0x0068
+	class Transform *RigRootTransform; //0x0068
 	char pad_0070[24]; //0x0070
 	int8_t militaryRegiment; //0x0088
-	char pad_0089[23]; //0x0089
-	class HoldableItem* holableItem; //0x00A0
-	char pad_00A8[40]; //0x00A8
+	char pad_0089[39]; //0x0089
+	class HoldableItem *holdableItem; //0x00B0
+	char pad_00B8[24]; //0x00B8
 }; //Size: 0x00D0
 
 class WeaponParryData

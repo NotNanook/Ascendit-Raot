@@ -15,11 +15,11 @@ void NoShootCooldown::onUpdate(Functions* functions)
 		CharacterObject* character = functions->get_Character(playerMain);
 		if (character != nullptr)
 		{
-			HoldableItem* holdable = character->holableItem;
+			HoldableItem* holdable = character->holdableItem;
 			if (holdable != nullptr)
 			{
-				character->holableItem->isLoadedLeft = 1;
-				character->holableItem->isLoadedRight = 1;
+				character->holdableItem->isLoadedLeft = 1;
+				character->holdableItem->isLoadedRight = 1;
 			}
 		}
 	}

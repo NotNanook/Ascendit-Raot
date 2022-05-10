@@ -17,7 +17,4 @@ public:
 
 	typedef Vector3* (__cdecl* _getPosition)(void* transform, void* out);
 	_getPosition getPosition;
-
-	typedef WeaponParryData* (__thiscall* _getParryData)(void* holableItem, int attackType, bool special);
-	_getParryData getParryData;
 };
