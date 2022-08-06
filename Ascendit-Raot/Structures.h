@@ -182,6 +182,14 @@ public:
 	float defensiveWindowTime; //0x0014
 }; //Size: 0x0018
 
+class MirrorClientObject
+{
+public:
+	char pad_0000[104]; //0x0000
+	std::string userName; //0x0068
+
+};
+
 class Vector3
 {
 public:

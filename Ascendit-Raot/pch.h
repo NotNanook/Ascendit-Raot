@@ -9,9 +9,6 @@
 
 // add headers that you want to pre-compile here
 #include "framework.h"
-#include "Window.h"
-#include "Button.h"
-#include "Option.h"
 #include "mem.h"
 #include "hook.h"
 #include "Structures.h"

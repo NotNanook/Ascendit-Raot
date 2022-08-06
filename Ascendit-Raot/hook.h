@@ -1,5 +1,6 @@
 #pragma once
 #include <Windows.h>
+#include <iostream>
 
 void* TrampHook64(BYTE* src, BYTE* dst, uintptr_t len);
 
