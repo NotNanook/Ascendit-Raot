@@ -27,8 +27,3 @@ void Cheat::setKey(int key)
 {
 	this->key = key;
 }
-
-void Cheat::setKey(char key)
-{
-	this->key = key;
-}

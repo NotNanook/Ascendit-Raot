@@ -14,5 +14,4 @@ public:
 	void virtual onUpdate(Functions* functions) {}
 	void checkForKey(Functions* functions);
 	void setKey(int key);
-	void setKey(char key);
 };
