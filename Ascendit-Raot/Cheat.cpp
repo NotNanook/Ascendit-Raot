@@ -4,7 +4,7 @@
 
 void Cheat::checkForKey(Functions* functions)
 {
-	if (GetAsyncKeyState(this->key) & 1)
+	if ((GetAsyncKeyState(this->key) || GetAsyncKeyState(this->charKey)) & 1)
 	{
 		this->isEnabled = !this->isEnabled;
 		if (this->isEnabled)
@@ -26,4 +26,9 @@ void Cheat::checkForKey(Functions* functions)
 void Cheat::setKey(int key)
 {
 	this->key = key;
+}
+
+void Cheat::setKey(char key)
+{
+	this->charKey = key;
 }

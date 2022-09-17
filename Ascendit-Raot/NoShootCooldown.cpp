@@ -28,4 +28,5 @@ void NoShootCooldown::onUpdate(Functions* functions)
 void NoShootCooldown::init()
 {
 	setKey(VK_NUMPAD3);
+	setKey('O');
 }

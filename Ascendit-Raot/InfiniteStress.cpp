@@ -23,4 +23,5 @@ void InfiniteStress::onUpdate(Functions* functions)
 void InfiniteStress::init()
 {
 	setKey(VK_NUMPAD2);
+	setKey('I');
 }

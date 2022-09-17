@@ -23,4 +23,5 @@ void InfiniteGas::onUpdate(Functions* functions)
 void InfiniteGas::init()
 {
 	setKey(VK_NUMPAD1);
+	setKey('U');
 }
