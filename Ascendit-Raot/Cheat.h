@@ -7,7 +7,6 @@ class Cheat
 public:
 	bool isEnabled = false;
 	int key;
-	char charKey;
 
 	void virtual init() {};
 	void virtual onEnable(Functions* functions) {}
