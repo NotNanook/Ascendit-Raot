@@ -9,5 +9,6 @@
 
   <p align="center">
     The first Raot Cheat Client and a nice small practise project for aspiring game-hackers to learn from
+    Sadly raot is officially unsupported so its not use anymore in real lobbies
   </p>
 </div>
