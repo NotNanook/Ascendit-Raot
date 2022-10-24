@@ -148,18 +148,16 @@ public:
 class HoldableItem
 {
 public:
-	char pad_0000[48]; //0x0000
-	int32_t maxAmmo; //0x0030
-	bool hasSharedAmmo; //0x0034
-	bool isSingleShot; //0x0035
-	char pad_0036[26]; //0x0036
-	bool allowsHooksReloads; //0x0050
+	char pad_0000[51]; //0x0000
+	bool infiniteAmmo; //0x0034
+	bool hasSharedAmmoAndDurability; //0x0035
+	bool isSingleShotUse; //0x0036
+	char pad_0037[25]; //0x0037
+	bool allowsHookedReloads; //0x0050
 	bool allowsHookedUsage; //0x0051
 	bool allowsBurstCharging; //0x0052
-	char pad_0053[85]; //0x0053
-	int32_t isLoadedLeft; //0x00A8
-	int32_t isLoadedRight; //0x00AC
-}; //Size: 0x00B0
+
+};
 
 class CharacterObject
 {
@@ -168,9 +166,8 @@ public:
 	class Transform *RigRootTransform; //0x0068
 	char pad_0070[24]; //0x0070
 	int8_t militaryRegiment; //0x0088
-	char pad_0089[39]; //0x0089
-	class HoldableItem *holdableItem; //0x00B0
-	char pad_00B8[24]; //0x00B8
+	char pad_0089[55]; //0x0089
+	class HoldableItem *holdableItem; //0x00C0
 }; //Size: 0x00D0
 
 class WeaponParryData

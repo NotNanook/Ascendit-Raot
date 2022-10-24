@@ -12,6 +12,9 @@ public:
 	typedef CharacterObject* (__thiscall* _get_Character)(void* playerMain);
 	_get_Character get_Character;
 
+	typedef void* (__thiscall* _setAmmo)(void* holdableItem, int leftAmmo, int rightAmmo);
+	_setAmmo setAmmo;
+
 	/*
 	typedef Transform* (__cdecl* _getTransform)(void* player);
 	_getTransform getTransform;
