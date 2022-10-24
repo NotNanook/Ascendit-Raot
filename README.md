@@ -8,6 +8,7 @@
   <h3 align="center">Ascendit Raot</h3>
 
   <p align="center">
-    The first Raot Cheat Client and a nice small practise project for aspiring game-hackers to learn from
+    The first Raot Cheat Client and a nice small practise project for aspiring game-hackers to learn from<br>
+    Sadly raot is officially unsupported so its not use anymore in real lobbies
   </p>
 </div>
