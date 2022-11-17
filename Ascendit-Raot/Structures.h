@@ -148,16 +148,16 @@ public:
 class HoldableItem
 {
 public:
-	char pad_0000[51]; //0x0000
-	bool infiniteAmmo; //0x0034
-	bool hasSharedAmmoAndDurability; //0x0035
-	bool isSingleShotUse; //0x0036
-	char pad_0037[25]; //0x0037
-	bool allowsHookedReloads; //0x0050
-	bool allowsHookedUsage; //0x0051
-	bool allowsBurstCharging; //0x0052
-
-};
+	char pad_0000[48]; //0x0000
+	int maxAmmo; //0x0030
+	bool N0000015C; //0x0034
+	char pad_0035[2]; //0x0035
+	bool infiniteAmmo; //0x0037
+	bool hasSharedAmmoAndDurability; //0x0038
+	char pad_0039[119]; //0x0039
+	int isLeftLoaded; //0x00B0
+	int isRightLoaded; //0x00B4
+}; //Size: 0x00B8
 
 class CharacterObject
 {
@@ -165,7 +165,7 @@ public:
 	char pad_0000[104]; //0x0000
 	class Transform *RigRootTransform; //0x0068
 	char pad_0070[24]; //0x0070
-	int8_t militaryRegiment; //0x0088
+	int militaryRegiment; //0x0088
 	char pad_0089[55]; //0x0089
 	class HoldableItem *holdableItem; //0x00C0
 }; //Size: 0x00D0
@@ -197,4 +197,11 @@ public:
 
 class Transform
 {
+};
+
+class HandedInt
+{
+public:
+	int L; //0x0000
+	int R; //0x0004
 };

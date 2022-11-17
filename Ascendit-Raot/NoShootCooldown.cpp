@@ -18,7 +18,8 @@ void NoShootCooldown::onUpdate(Functions* functions)
 			HoldableItem* holdable = character->holdableItem;
 			if (holdable != nullptr)
 			{
-				//character->holdableItem->infiniteAmmo = 1;
+				character->holdableItem->isLeftLoaded = 1;
+				character->holdableItem->isRightLoaded = 1;
 			}
 		}
 	}
