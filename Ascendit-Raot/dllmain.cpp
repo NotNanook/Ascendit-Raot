@@ -4,6 +4,8 @@
 
 DWORD WINAPI Thread(HMODULE hModule)
 {
+    Sleep(1000);
+
     AllocConsole();
     FILE* f;
     freopen_s(&f, "CONOUT$", "w", stdout);
@@ -17,7 +19,7 @@ DWORD WINAPI Thread(HMODULE hModule)
 
         cheatManager.onUpdate(&functions);
 
-        Sleep(5);
+        Sleep(10);
     }  
 
     FreeConsole();
