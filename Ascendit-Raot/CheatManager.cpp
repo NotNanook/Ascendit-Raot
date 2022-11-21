@@ -1,4 +1,3 @@
-#include "pch.h"
 #include "CheatManager.h"
 #include "InfiniteGas.h"
 #include "InfiniteStress.h"

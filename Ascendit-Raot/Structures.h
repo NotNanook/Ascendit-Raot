@@ -1,4 +1,5 @@
 #pragma once
+#include <string>
 
 class PlayerMain
 {
@@ -197,4 +198,10 @@ public:
 
 class Transform
 {
+};
+
+enum CursorLockMode {
+	None,
+	Locked,
+	Confined
 };

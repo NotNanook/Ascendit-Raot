@@ -366,3 +366,4 @@ FodyWeavers.xsd
 upload.bat
 WinSCP.log
 hashRaot.txt
+.Build/

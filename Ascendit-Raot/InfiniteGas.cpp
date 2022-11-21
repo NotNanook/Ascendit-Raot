@@ -1,5 +1,3 @@
-#include "pch.h"
-#include "Functions.h"
 #include "InfiniteGas.h"
 
 InfiniteGas infiniteGas;

@@ -9,23 +9,16 @@ public:
 
 	Functions(uintptr_t baseAddress);
 
+	// Raot functions
 	typedef CharacterObject* (__thiscall* _get_Character)(void* playerMain);
 	_get_Character get_Character;
 
 	typedef void* (__thiscall* _setAmmo)(void* holdableItem, int leftAmmo, int rightAmmo);
 	_setAmmo setAmmo;
 
-	/*
-	typedef Transform* (__cdecl* _getTransform)(void* player);
-	_getTransform getTransform;
+	typedef void* (__cdecl* _set_lockState)(CursorLockMode value);
+	_set_lockState set_lockState;
 
-	typedef Vector3* (__cdecl* _getPosition)(void* transform, void* out);
-	_getPosition getPosition;
-
-	typedef void* (__fastcall* _sendMessage)(std::string channel, std::string message);
-	_sendMessage sendMessage;
-
-	typedef MirrorClientObject* (__cdecl* _getAlivePlayers)(void* loadList, void* ignoreClient);
-	_getAlivePlayers getAlivePlayers;
-	*/
+	typedef CursorLockMode* (__cdecl* _get_lockState)();
+	_get_lockState get_lockState;
 };
