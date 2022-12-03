@@ -12,6 +12,7 @@ public:
 	static void setStyle();
 
 	inline static ImGuiWindowFlags window_flags = 0;
-	inline static CursorLockMode* lastState = nullptr;
+	inline static CursorLockMode lastState = None;
+	inline static ImFont* fontFutura = nullptr;
 };
 

@@ -1,7 +1,9 @@
 #pragma once
+#include "drawHelper.h"
+#include "DirectX11.h"
+
 #include <wtypes.h>
 #include <d3d11.h>
-#include "drawHelper.h"
 #include <iostream>
 
 // Raot functions
@@ -75,14 +77,14 @@ HRESULT APIENTRY MJPresent(IDXGISwapChain* pSwapChain, UINT SyncInterval, UINT F
 			ImGui_Initialised = true;
 		}
 	}
-	if (GetAsyncKeyState(VK_RSHIFT) & 1) {
+	if ((GetAsyncKeyState(VK_RSHIFT) & 1) || (GetAsyncKeyState(VK_ESCAPE) & 1 && ShowMenu)) {
 		if (!ShowMenu) {
-			//drawHelper::lastState = functions.get_lockState();
-			//std::cout << *drawHelper::lastState << std::endl;
+			drawHelper::lastState = functions.get_lockState();
+			std::cout << drawHelper::lastState << std::endl;
 			functions.set_lockState(None);
 		}
 		else {
-			functions.set_lockState(Locked);
+			functions.set_lockState(drawHelper::lastState);
 		}
 
 		ShowMenu = !ShowMenu;

@@ -1,4 +1,4 @@
-#include "../Global.h"
+#include "Global.h"
 #include <dxgi.h>
 #include <d3d11.h>
 

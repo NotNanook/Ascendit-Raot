@@ -1,4 +1,4 @@
-#include "pch.h"
+#include "hook.h"
 
 BYTE shellJump[] = {
 	0xFF, 0x25, 0x00, 0x00, 0x00, 0x00, // jmp qword ptr [$+6]

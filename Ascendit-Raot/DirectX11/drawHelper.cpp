@@ -3,7 +3,7 @@
 #include "Structures.h"
 
 void drawHelper::drawGui(Functions* functions) {
-	
+
 	// Draw Gui
 	ImGui::Begin("Ascendit Raot", 0, drawHelper::window_flags);
     ImGui::Text("Ascendit Raot");
@@ -17,12 +17,17 @@ void drawHelper::drawGui(Functions* functions) {
     if (ImGui::CollapsingHeader("Render")) {
         ImGui::Checkbox("ESP", &cheatManager.modules[3]->isEnabled);
     }
+
+    ImGui::End();
 }
 
 void drawHelper::setStyle() {
+
+    // Set window flags
     drawHelper::window_flags |= ImGuiWindowFlags_NoCollapse;
     drawHelper::window_flags |= ImGuiWindowFlags_NoTitleBar;
 
+    // Set Gui Style
     ImGuiStyle* style = &ImGui::GetStyle();
 
     style->WindowPadding = ImVec2(15, 15);
@@ -39,9 +44,9 @@ void drawHelper::setStyle() {
 
     style->Colors[ImGuiCol_Text] = ImVec4(0.80f, 0.80f, 0.83f, 1.00f);
     style->Colors[ImGuiCol_TextDisabled] = ImVec4(0.24f, 0.23f, 0.29f, 1.00f);
-    style->Colors[ImGuiCol_WindowBg] = ImVec4(0.06f, 0.05f, 0.07f, 1.00f);
+    style->Colors[ImGuiCol_WindowBg] = ImVec4(0.06f, 0.05f, 0.07f, 0.96f);
     style->Colors[ImGuiCol_PopupBg] = ImVec4(0.07f, 0.07f, 0.09f, 1.00f);
-    style->Colors[ImGuiCol_Border] = ImVec4(0.80f, 0.80f, 0.83f, 1.00f);
+    style->Colors[ImGuiCol_Border] = ImVec4(0.80f, 0.80f, 0.83f, 0.80f);
     style->Colors[ImGuiCol_BorderShadow] = ImVec4(0.92f, 0.91f, 0.88f, 0.00f);
     style->Colors[ImGuiCol_FrameBg] = ImVec4(0.10f, 0.09f, 0.12f, 1.00f);
     style->Colors[ImGuiCol_FrameBgHovered] = ImVec4(0.24f, 0.23f, 0.29f, 1.00f);

@@ -1,10 +1,9 @@
-#include "DirectX11.h"
-#include "directHelper.h"
 #include "CheatManager.h"
+#include "directHelper.h"
 
 DWORD WINAPI MainThread(LPVOID lpParameter) {
 
-	// directx stuff
+	// DirectX Related Code
 	bool WindowFocus = false;
 	while (WindowFocus == false) {
 		DWORD ForegroundWindowProcessID;
@@ -44,24 +43,17 @@ DWORD WINAPI MainThread(LPVOID lpParameter) {
 		}
 	}
 
-	// raot stuff
+	// Cheats Related Code
 	Sleep(1000);
 
 	AllocConsole();
 	FILE* f;
 	freopen_s(&f, "CONOUT$", "w", stdout);
 
-	functions = Functions((uintptr_t)GetModuleHandleW(L"GameAssembly.dll"));
+	functions = Functions((uintptr_t)GetModuleHandle("GameAssembly.dll"));
+
 	cheatManager.init();
-
-	while (true)
-	{
-		if (GetAsyncKeyState(VK_NUMPAD0) & 1) { break; }
-
-		cheatManager.onUpdate(&functions);
-
-		Sleep(10);
-	}
+	cheatManager.updateCheats(&functions);
 
 	FreeConsole();
 	if (f) fclose(f);

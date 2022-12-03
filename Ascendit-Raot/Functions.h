@@ -1,5 +1,6 @@
 #pragma once
 #include "Structures.h"
+#include <iostream>
 
 class Functions
 {
@@ -19,6 +20,6 @@ public:
 	typedef void* (__cdecl* _set_lockState)(CursorLockMode value);
 	_set_lockState set_lockState;
 
-	typedef CursorLockMode* (__cdecl* _get_lockState)();
+	typedef CursorLockMode (__cdecl* _get_lockState)();
 	_get_lockState get_lockState;
 };
