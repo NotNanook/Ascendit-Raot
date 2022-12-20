@@ -1,6 +1,9 @@
 #pragma once
-#include "Structures.h"
 #include <iostream>
+#include <windows.h>
+#include <psapi.h>
+#include "Structures.h"
+#include "mem.h"
 
 class Functions
 {
@@ -8,7 +11,7 @@ public:
 	uintptr_t baseAddress;
 	uintptr_t dllGameBaseOffset;
 
-	Functions(uintptr_t baseAddress);
+	Functions(HMODULE baseAddress);
 
 	// Raot functions
 	typedef CharacterObject* (__thiscall* _get_Character)(void* playerMain);

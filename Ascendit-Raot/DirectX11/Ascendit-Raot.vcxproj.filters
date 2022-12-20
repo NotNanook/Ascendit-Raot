@@ -16,9 +16,12 @@
     <Filter Include="Source Files">
       <UniqueIdentifier>{8828bc04-0c2a-43c9-af5d-28e29f26ff42}</UniqueIdentifier>
     </Filter>
+    <Filter Include="IL2CPP-Resolver">
+      <UniqueIdentifier>{0e350d4c-e608-4f57-99ff-38bf0b6c1abd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="DirectX11.h">
+    <ClInclude Include="DirectX.h">
       <Filter>DirectX Hook</Filter>
     </ClInclude>
     <ClInclude Include="..\Directories\MinHook\Src\buffer.h">
@@ -41,9 +44,6 @@
     </ClInclude>
     <ClInclude Include="..\Directories\MinHook\Src\hde\table64.h">
       <Filter>DirectX Hook\MinHook\hde</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Global.h">
-      <Filter>DirectX Hook</Filter>
     </ClInclude>
     <ClInclude Include="..\Directories\ImGui\imconfig.h">
       <Filter>ImGui</Filter>
@@ -178,6 +178,12 @@
     </ClCompile>
     <ClCompile Include="..\mem.cpp">
       <Filter>Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="directHelper.cpp">
+      <Filter>Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="DirectX.cpp">
+      <Filter>DirectX Hook</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

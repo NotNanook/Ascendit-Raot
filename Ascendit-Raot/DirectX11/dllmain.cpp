@@ -1,78 +1,49 @@
 #include "CheatManager.h"
-#include "directHelper.h"
+#include "DirectX.h"
 
 DWORD WINAPI MainThread(LPVOID lpParameter) {
 
-	// DirectX Related Code
-	bool WindowFocus = false;
-	while (WindowFocus == false) {
-		DWORD ForegroundWindowProcessID;
-		GetWindowThreadProcessId(GetForegroundWindow(), &ForegroundWindowProcessID);
-		if (GetCurrentProcessId() == ForegroundWindowProcessID) {
+	DirectX::preInit();
 
-			Process::ID = GetCurrentProcessId();
-			Process::Handle = GetCurrentProcess();
-			Process::Hwnd = GetForegroundWindow();
-
-			RECT TempRect;
-			GetWindowRect(Process::Hwnd, &TempRect);
-			Process::WindowWidth = TempRect.right - TempRect.left;
-			Process::WindowHeight = TempRect.bottom - TempRect.top;
-
-			char TempTitle[MAX_PATH];
-			GetWindowText(Process::Hwnd, TempTitle, sizeof(TempTitle));
-			Process::Title = TempTitle;
-
-			char TempClassName[MAX_PATH];
-			GetClassName(Process::Hwnd, TempClassName, sizeof(TempClassName));
-			Process::ClassName = TempClassName;
-
-			char TempPath[MAX_PATH];
-			GetModuleFileNameEx(Process::Handle, NULL, TempPath, sizeof(TempPath));
-			Process::Path = TempPath;
-
-			WindowFocus = true;
-		}
-	}
 	bool InitHook = false;
 	while (InitHook == false) {
-		if (DirectX11::Init() == true) {
-		    CreateHook(8, (void**)&oIDXGISwapChainPresent, MJPresent);
-			CreateHook(12, (void**)&oID3D11DrawIndexed, MJDrawIndexed);
+		if (DirectX::Init() == true) {
+			DirectX::CreateHook(8, (void**)&DirectX::oIDXGISwapChainPresent, DirectX::MJPresent);
+			DirectX::CreateHook(12, (void**) &DirectX::oID3D11DrawIndexed, DirectX::MJDrawIndexed);
 			InitHook = true;
 		}
 	}
 
-	// Cheats Related Code
-	Sleep(1000);
 
 	AllocConsole();
 	FILE* f;
 	freopen_s(&f, "CONOUT$", "w", stdout);
 
-	functions = Functions((uintptr_t)GetModuleHandle("GameAssembly.dll"));
+	Sleep(1000);
+
+	DirectX::functions = Functions(GetModuleHandle("GameAssembly.dll"));
 
 	cheatManager.init();
-	cheatManager.updateCheats(&functions);
+	cheatManager.updateCheats(&DirectX::functions);
 
 	FreeConsole();
 	if (f) fclose(f);
 
-	RemoveAll();
+	DirectX::RemoveAll();
 	FreeLibraryAndExitThread((HMODULE)lpParameter, TRUE);
 	return 0;
 }
 
-BOOL APIENTRY DllMain( HMODULE hModule, 
-					   DWORD   ul_reason_for_call,
-					   LPVOID  lpReserved
-					 )
+BOOL APIENTRY DllMain(HMODULE hModule,
+	DWORD   ul_reason_for_call,
+	LPVOID  lpReserved
+)
 {
 	switch (ul_reason_for_call)
 	{
 	case DLL_PROCESS_ATTACH:
 		DisableThreadLibraryCalls(hModule);
-		Process::Module = hModule;
+		DirectX::Module = hModule;
 		CreateThread(0, 0, MainThread, 0, 0, 0);
 		break;
 	case DLL_PROCESS_DETACH:

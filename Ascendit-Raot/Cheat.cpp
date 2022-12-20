@@ -1,5 +1,4 @@
 #include "Cheat.h"
-#include "Functions.h"
 
 void Cheat::checkForKey(Functions* functions)
 {

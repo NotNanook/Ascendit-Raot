@@ -1,7 +1,5 @@
 #pragma once
 #include "Functions.h"
-#include "mem.h"
-#include <iostream>
 
 class Cheat
 {

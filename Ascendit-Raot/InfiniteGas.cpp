@@ -2,24 +2,20 @@
 
 InfiniteGas infiniteGas;
 
-void InfiniteGas::onUpdate(Functions* functions) 
-{
+void InfiniteGas::onUpdate(Functions* functions) {
 	uintptr_t playerPointer = mem::FindDMAAddy(functions->dllGameBaseOffset, { 0xB8, 0x0 });
 	if (playerPointer == NULL) { return; }
 
 	PlayerMain* playerMain = *(PlayerMain**)playerPointer;
-	if (playerMain != nullptr)
-	{
+	if (playerMain != nullptr) {
 		EquipmentManager* equipmentManager = playerMain->equipmentManager;
-		if (equipmentManager != nullptr)
-		{
+		if (equipmentManager != nullptr) {
 			equipmentManager->gasModule->gasPercent = 1;
 		}
 	}
 }
 
-void InfiniteGas::init()
-{
+void InfiniteGas::init() {
 	setKey(VK_NUMPAD1);
 	setKey('K');
 }
