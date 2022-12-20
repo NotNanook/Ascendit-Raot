@@ -93,9 +93,6 @@
     <ClInclude Include="E:\ClientCoding\Ascendit-Raot\Ascendit-Raot\Structures.h">
       <Filter>Utils</Filter>
     </ClInclude>
-    <ClInclude Include="directHelper.h">
-      <Filter>Utils</Filter>
-    </ClInclude>
     <ClInclude Include="drawHelper.h">
       <Filter>Utils</Filter>
     </ClInclude>
@@ -177,9 +174,6 @@
       <Filter>Utils</Filter>
     </ClCompile>
     <ClCompile Include="..\mem.cpp">
-      <Filter>Utils</Filter>
-    </ClCompile>
-    <ClCompile Include="directHelper.cpp">
       <Filter>Utils</Filter>
     </ClCompile>
     <ClCompile Include="DirectX.cpp">

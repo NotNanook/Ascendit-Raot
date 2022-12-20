@@ -36,7 +36,6 @@
     <ClInclude Include="..\Directories\MinHook\Src\trampoline.h" />
     <ClInclude Include="..\Functions.h" />
     <ClInclude Include="..\mem.h" />
-    <ClInclude Include="directHelper.h" />
     <ClInclude Include="DirectX.h" />
     <ClInclude Include="drawHelper.h" />
     <ClInclude Include="E:\ClientCoding\Ascendit-Raot\Ascendit-Raot\Cheat.h" />
@@ -63,7 +62,6 @@
     <ClCompile Include="..\Directories\MinHook\Src\trampoline.c" />
     <ClCompile Include="..\Functions.cpp" />
     <ClCompile Include="..\mem.cpp" />
-    <ClCompile Include="directHelper.cpp" />
     <ClCompile Include="DirectX.cpp" />
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="drawHelper.cpp" />
@@ -224,7 +222,7 @@
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
-      <AdditionalIncludeDirectories>E:\ClientCoding\Ascendit-Raot\Ascendit-Raot\Directories\IL2CPP_Resolver;E:\ClientCoding\Ascendit-Raot\Ascendit-Raot\Directories;E:\ClientCoding\Ascendit-Raot\Ascendit-Raot\DirectX11;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>E:\ClientCoding\Ascendit-Raot\Ascendit-Raot\DirectX11;E:\ClientCoding\Ascendit-Raot\Ascendit-Raot;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
