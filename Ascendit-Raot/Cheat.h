@@ -5,12 +5,14 @@ class Cheat
 {
 public:
 	bool isEnabled = false;
-	int key;
+	bool isToggled = false;
+	std::vector<int> keys = {};
 
 	void virtual init() {};
 	void virtual onEnable(Functions* functions) {}
 	void virtual onDisable(Functions* functions) {}
 	void virtual onUpdate(Functions* functions) {}
 	void checkForKey(Functions* functions);
+	void checkForToggle(Functions* functions);
 	void setKey(int key);
 };

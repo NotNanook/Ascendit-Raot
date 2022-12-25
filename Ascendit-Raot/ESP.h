@@ -6,6 +6,7 @@ class ESP : public Cheat
 public:
 	void init() override;
 	void onEnable(Functions* functions) override;
+	void onDisable(Functions* functions) override;
 	void onUpdate(Functions* functions) override;
 };
 

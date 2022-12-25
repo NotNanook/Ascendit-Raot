@@ -9,13 +9,13 @@ void drawHelper::drawGui(Functions* functions) {
     ImGui::Text("Ascendit Raot");
 
     if (ImGui::CollapsingHeader("Combat")) {
-        ImGui::Checkbox("Infinite Gas", &cheatManager.modules[0]->isEnabled);
-        ImGui::Checkbox("Infinite Stress", &cheatManager.modules[1]->isEnabled);
-        ImGui::Checkbox("No Shoot Cooldown", &cheatManager.modules[2]->isEnabled);
+        ImGui::Checkbox("Infinite Gas", &cheatManager.modules[0]->isToggled);
+        ImGui::Checkbox("Infinite Stress", &cheatManager.modules[1]->isToggled);
+        ImGui::Checkbox("No Shoot Cooldown", &cheatManager.modules[2]->isToggled);
     }
 
     if (ImGui::CollapsingHeader("Render")) {
-        ImGui::Checkbox("ESP", &cheatManager.modules[3]->isEnabled);
+        ImGui::Checkbox("ESP", &cheatManager.modules[3]->isToggled);
     }
 
     ImGui::End();

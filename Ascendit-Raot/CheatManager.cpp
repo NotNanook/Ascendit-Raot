@@ -16,6 +16,7 @@ void CheatManager::init() {
 void CheatManager::onUpdate(Functions* functions) {
 	for (int i = 0; i < modules.size(); i++) {
 		modules[i]->checkForKey(functions);
+		modules[i]->checkForToggle(functions);
 	}
 }
 

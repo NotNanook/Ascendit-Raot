@@ -4,6 +4,7 @@ ESP esp;
 
 void ESP::onEnable(Functions* functions)
 {
+	std::cout << "On Enable" << std::endl;
 }
 
 void ESP::onUpdate(Functions* functions)
