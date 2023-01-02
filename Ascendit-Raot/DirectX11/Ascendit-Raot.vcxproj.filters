@@ -102,6 +102,9 @@
     <ClInclude Include="..\mem.h">
       <Filter>Utils</Filter>
     </ClInclude>
+    <ClInclude Include="NoClip.h">
+      <Filter>Cheats</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Directories\MinHook\Src\buffer.c">
@@ -178,6 +181,9 @@
     </ClCompile>
     <ClCompile Include="DirectX.cpp">
       <Filter>DirectX Hook</Filter>
+    </ClCompile>
+    <ClCompile Include="NoClip.cpp">
+      <Filter>Cheats</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

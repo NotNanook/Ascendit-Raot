@@ -2,8 +2,10 @@
 #include <cassert>
 #include <dxgi.h>
 #include <d3d11.h>
-#include "Functions.h"
+
 #include "drawHelper.h"
+#include "CheatManager.h"
+
 #include <../Directories/MinHook/Include/MinHook.h>
 #include <../Directories/ImGui/imgui_impl_dx11.h>
 #include <Directories/ImGui/imgui_impl_win32.h>
@@ -12,7 +14,7 @@
 class DirectX {
 
 public:
-	static bool preInit();
+	static bool preInit(LPVOID lpParameter);
 	static bool Init();
 	static bool CheckDirectXVersion();
 	static bool InitWindow();
@@ -39,7 +41,7 @@ public:
 	inline static bool ShowMenu = false;
 	inline static bool ImGui_Initialised = false;
 
-	inline static Functions functions = Functions(GetModuleHandle(NULL));
+	inline static Functions functions = Functions(GetModuleHandle(NULL), GetModuleHandle(NULL));
 
 	inline static DWORD ID;
 	inline static HANDLE Handle;
@@ -55,6 +57,8 @@ public:
 	inline static ID3D11Device* Device;
 	inline static ID3D11DeviceContext* DeviceContext;
 	inline static ID3D11RenderTargetView* RenderTargetView;
+
+	inline static LPVOID lpParameter;
 };
 
 // Things that cant be static because idk

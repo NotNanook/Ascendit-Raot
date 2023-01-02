@@ -46,6 +46,7 @@
     <ClInclude Include="E:\ClientCoding\Ascendit-Raot\Ascendit-Raot\InfiniteStress.h" />
     <ClInclude Include="E:\ClientCoding\Ascendit-Raot\Ascendit-Raot\NoShootCooldown.h" />
     <ClInclude Include="E:\ClientCoding\Ascendit-Raot\Ascendit-Raot\Structures.h" />
+    <ClInclude Include="NoClip.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Directories\ImGui\imgui.cpp" />
@@ -73,6 +74,7 @@
     <ClCompile Include="E:\ClientCoding\Ascendit-Raot\Ascendit-Raot\InfiniteStress.cpp" />
     <ClCompile Include="E:\ClientCoding\Ascendit-Raot\Ascendit-Raot\NoShootCooldown.cpp" />
     <ClCompile Include="E:\ClientCoding\Ascendit-Raot\Ascendit-Raot\Structures.cpp" />
+    <ClCompile Include="NoClip.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

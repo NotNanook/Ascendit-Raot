@@ -196,9 +196,9 @@ public:
 	float z;
 };
 
-class Transform
-{
-};
+class Transform {};
+
+class UnityScene {};
 
 enum CursorLockMode {
 	None,

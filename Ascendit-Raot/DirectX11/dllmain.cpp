@@ -1,9 +1,8 @@
-#include "CheatManager.h"
 #include "DirectX.h"
 
 DWORD WINAPI MainThread(LPVOID lpParameter) {
 
-	DirectX::preInit();
+	DirectX::preInit(lpParameter);
 
 	bool InitHook = false;
 	while (InitHook == false) {
@@ -14,23 +13,20 @@ DWORD WINAPI MainThread(LPVOID lpParameter) {
 		}
 	}
 
-
 	AllocConsole();
 	FILE* f;
 	freopen_s(&f, "CONOUT$", "w", stdout);
 
-	Sleep(1000);
+	// Wait for game logic library to load
+	while (!GetModuleHandle("GameAssembly.dll")) { continue; }
 
-	DirectX::functions = Functions(GetModuleHandle("GameAssembly.dll"));
+	DirectX::functions = Functions(GetModuleHandle("GameAssembly.dll"), GetModuleHandle("UnityPlayer.dll"));
 
 	cheatManager.init();
-	cheatManager.updateCheats(&DirectX::functions);
 
-	FreeConsole();
-	if (f) fclose(f);
+	//FreeConsole();
+	//if (f) fclose(f);
 
-	DirectX::RemoveAll();
-	FreeLibraryAndExitThread((HMODULE)lpParameter, TRUE);
 	return 0;
 }
 

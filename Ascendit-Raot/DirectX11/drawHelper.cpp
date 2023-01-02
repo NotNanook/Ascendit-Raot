@@ -1,6 +1,5 @@
 #include "drawHelper.h"
 #include "CheatManager.h"
-#include "Structures.h"
 
 void drawHelper::drawGui(Functions* functions) {
 
@@ -16,6 +15,10 @@ void drawHelper::drawGui(Functions* functions) {
 
     if (ImGui::CollapsingHeader("Render")) {
         ImGui::Checkbox("ESP", &cheatManager.modules[3]->isToggled);
+    }
+
+    if (ImGui::CollapsingHeader("Misc")) {
+        ImGui::Checkbox("No Clip", &cheatManager.modules[4]->isToggled);
     }
 
     ImGui::End();

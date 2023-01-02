@@ -1,6 +1,6 @@
 #include "DirectX.h"
 
-bool DirectX::preInit() {
+bool DirectX::preInit(LPVOID _lpParameter) {
 	bool WindowFocus = false;
 	while (WindowFocus == false) {
 		DWORD ForegroundWindowProcessID;
@@ -32,6 +32,8 @@ bool DirectX::preInit() {
 			return true;
 		}
 	}
+
+	lpParameter = _lpParameter;
 }
 
 bool DirectX::Init() {
@@ -172,12 +174,20 @@ void DirectX::DisableHook(uint16_t Index) {
 
 void DirectX::RemoveAll() {
 	MH_RemoveHook(MH_ALL_HOOKS);
+	MH_Uninitialize();
+
+	ImGui_ImplDX11_Shutdown();
+	ImGui_ImplWin32_Shutdown();
+	ImGui::DestroyContext();
+
 	free(MethodsTable);
 	MethodsTable = NULL;
+
+	FreeLibraryAndExitThread((HMODULE)lpParameter, TRUE);
 }
 
 LRESULT APIENTRY DirectX::WndProcFunc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam) {
-	if (ShowMenu) {
+	if (ShowMenu && ImGui_Initialised) {
 		ImGui_ImplWin32_WndProcHandler(hwnd, uMsg, wParam, lParam);
 		return true;
 	}
@@ -213,6 +223,7 @@ HRESULT APIENTRY DirectX::MJPresent(IDXGISwapChain* pSwapChain, UINT SyncInterva
 			ImGui_Initialised = true;
 		}
 	}
+	// Menu State
 	if ((GetAsyncKeyState(VK_RSHIFT) & 1) || (GetAsyncKeyState(VK_ESCAPE) & 1 && ShowMenu)) {
 		if (!ShowMenu) {
 			drawHelper::lastState = functions.get_lockState();
@@ -221,9 +232,14 @@ HRESULT APIENTRY DirectX::MJPresent(IDXGISwapChain* pSwapChain, UINT SyncInterva
 		else {
 			functions.set_lockState(drawHelper::lastState);
 		}
-
 		ShowMenu = !ShowMenu;
 	}
+
+	if (GetAsyncKeyState(VK_NUMPAD0) & 1) { 
+		RemoveAll(); 
+	}
+
+	cheatManager.onUpdate(&DirectX::functions);
 
 	ImGui_ImplDX11_NewFrame();
 	ImGui_ImplWin32_NewFrame();
