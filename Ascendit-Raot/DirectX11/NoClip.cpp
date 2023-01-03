@@ -36,6 +36,15 @@ void NoClip::onUpdate(Functions* functions) {
 	*noClipAddress = 100; // Set this weird variable to 100 or something big and youll be able to go through walls
 }
 
+void NoClip::onDisable(Functions* functions) {
+	uintptr_t xCordPointer = mem::FindDMAAddy(functions->dllPlayerBaseOffset, { 0x30, 0x30, 0x0, 0x20 });
+	if (xCordPointer == NULL) { return; }
+
+	float* noClipAddress = (float*)(xCordPointer + 0x3C);
+	*noClipAddress = -1; // Set this weird variable to -1 and collisions will work again
+
+}
+
 void NoClip::init() {
 	setKey('N');
 }
