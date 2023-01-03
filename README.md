@@ -26,8 +26,13 @@
 - Build for the x64 Architecture
 - Inject with Cheat Engine or other injector (or just use the launcher)
 
+# Usage
+- `RSHIFT` to open GUI
+- You can add multiple hotkeys in the `init()` function of each cheat
+
 # Todo
 - [X] GUI
 - [X] No Clip
 - [ ] ESP
+- [ ] Config File
 - [ ] Killaura
