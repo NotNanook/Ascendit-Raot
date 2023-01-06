@@ -1,12 +1,11 @@
 #pragma once
-#include "mem.h"
+#include "..\utils\mem.h"
 #include <Windows.h>
 #include <iostream>
 
 void* TrampHook64(BYTE* src, BYTE* dst, uintptr_t len);
 
-struct Hook
-{
+struct Hook {
 	bool bStatus{ false };
 
 	BYTE* src{ nullptr };

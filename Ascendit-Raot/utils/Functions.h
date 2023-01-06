@@ -5,8 +5,7 @@
 #include "Structures.h"
 #include "mem.h"
 
-class Functions
-{
+class Functions {
 public:
 	uintptr_t baseAddress;
 	uintptr_t dllGameBaseOffset;

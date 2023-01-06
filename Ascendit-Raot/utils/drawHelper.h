@@ -1,12 +1,11 @@
 #pragma once
 #include "Functions.h"
 
-#include "../Directories/ImGui/imgui.h"
-#include "../Directories/ImGui/imgui_impl_dx11.h"
-#include "../Directories/ImGui/imgui_impl_win32.h"
+#include "../dependencies/ImGui/imgui.h"
+#include "../dependencies/ImGui/imgui_impl_dx11.h"
+#include "../dependencies/ImGui/imgui_impl_win32.h"
 
-class drawHelper
-{
+class drawHelper {
 public:
 	static void drawGui(Functions* functions);
 	static void setStyle();
@@ -15,4 +14,3 @@ public:
 	inline static CursorLockMode lastState = None;
 	inline static ImFont* fontFutura = nullptr;
 };
-

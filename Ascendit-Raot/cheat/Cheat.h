@@ -1,18 +1,17 @@
 #pragma once
-#include "Functions.h"
+#include "..\utils\Functions.h"
 
-class Cheat
-{
+class Cheat {
 public:
 	bool isEnabled = false;
 	bool isToggled = false;
 	std::vector<int> keys = {};
 
-	void virtual init() {};
+	void virtual init() {}
 	void virtual onEnable(Functions* functions) {}
 	void virtual onDisable(Functions* functions) {}
 	void virtual onUpdate(Functions* functions) {}
 	void checkForKey(Functions* functions);
 	void checkForToggle(Functions* functions);
-	void setKey(int key);
+	void addKey(int key);
 };

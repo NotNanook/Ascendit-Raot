@@ -3,13 +3,13 @@
 #include <dxgi.h>
 #include <d3d11.h>
 
-#include "drawHelper.h"
-#include "CheatManager.h"
+#include "../utils/drawHelper.h"
+#include "../cheat/CheatManager.h"
 
-#include <../Directories/MinHook/Include/MinHook.h>
-#include <../Directories/ImGui/imgui_impl_dx11.h>
-#include <Directories/ImGui/imgui_impl_win32.h>
-#include <../Directories/ImGui/imgui.h>
+#include "../dependencies/MinHook/Include/MinHook.h"
+#include "../dependencies/ImGui/imgui_impl_dx11.h"
+#include "../dependencies/ImGui/imgui_impl_win32.h"
+#include "../dependencies/ImGui/imgui.h"
 
 class DirectX {
 

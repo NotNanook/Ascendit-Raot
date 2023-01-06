@@ -1,8 +1,7 @@
 #pragma once
-#include "Cheat.h"
+#include "..\Cheat.h"
 
-class NoShootCooldown : public Cheat
-{
+class NoShootCooldown : public Cheat {
 public:
 	void init() override;
 	void onUpdate(Functions* functions) override;

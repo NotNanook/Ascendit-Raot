@@ -2,13 +2,11 @@
 
 ESP esp;
 
-void ESP::onEnable(Functions* functions)
-{
+void ESP::onEnable(Functions* functions) {
 	std::cout << "On Enable" << std::endl;
 }
 
-void ESP::onUpdate(Functions* functions)
-{
+void ESP::onUpdate(Functions* functions) {
 	/*
 	IL2CPP::Initialize();
 	Unity::CGameObject* pLocal = Unity::GameObject::Find("PlayerMain");
@@ -30,7 +28,6 @@ void ESP::onUpdate(Functions* functions)
 	*/
 }
 
-void ESP::init()
-{
-	setKey(VK_NUMPAD4);
+void ESP::init() {
+	addKey(VK_NUMPAD4);
 }

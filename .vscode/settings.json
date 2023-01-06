@@ -1,0 +1,18 @@
+{
+    "files.associations": {
+        "vector": "cpp",
+        "iostream": "cpp",
+        "string": "cpp",
+        "atomic": "cpp",
+        "iosfwd": "cpp",
+        "iterator": "cpp",
+        "xstring": "cpp",
+        "xutility": "cpp",
+        "ios": "cpp",
+        "istream": "cpp",
+        "ostream": "cpp",
+        "cassert": "cpp",
+        "*.rh": "cpp",
+        "xstddef": "cpp"
+    }
+}

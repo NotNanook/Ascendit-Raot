@@ -1,34 +1,32 @@
 #include "drawHelper.h"
-#include "CheatManager.h"
+#include "../cheat/CheatManager.h"
 
 void drawHelper::drawGui(Functions* functions) {
-
 	// Draw Gui
-	ImGui::Begin("Ascendit Raot", 0, drawHelper::window_flags);
+	ImGui::Begin("Ascendit Raot", 0, window_flags);
     ImGui::Text("Ascendit Raot");
 
     if (ImGui::CollapsingHeader("Combat")) {
-        ImGui::Checkbox("Infinite Gas", &cheatManager.modules[0]->isToggled);
-        ImGui::Checkbox("Infinite Stress", &cheatManager.modules[1]->isToggled);
-        ImGui::Checkbox("No Shoot Cooldown", &cheatManager.modules[2]->isToggled);
+        ImGui::Checkbox("Infinite Gas", &infiniteGas.isToggled);
+        ImGui::Checkbox("Infinite Stress", &infiniteStress.isToggled);
+        ImGui::Checkbox("No Shoot Cooldown", &noShootCooldown.isToggled);
     }
 
     if (ImGui::CollapsingHeader("Render")) {
-        ImGui::Checkbox("ESP", &cheatManager.modules[3]->isToggled);
+        ImGui::Checkbox("ESP", &esp.isToggled);
     }
 
     if (ImGui::CollapsingHeader("Misc")) {
-        ImGui::Checkbox("No Clip", &cheatManager.modules[4]->isToggled);
+        ImGui::Checkbox("No Clip", &noClip.isToggled);
     }
 
     ImGui::End();
 }
 
 void drawHelper::setStyle() {
-
     // Set window flags
-    drawHelper::window_flags |= ImGuiWindowFlags_NoCollapse;
-    drawHelper::window_flags |= ImGuiWindowFlags_NoTitleBar;
+    window_flags |= ImGuiWindowFlags_NoCollapse;
+    window_flags |= ImGuiWindowFlags_NoTitleBar;
 
     // Set Gui Style
     ImGuiStyle* style = &ImGui::GetStyle();
