@@ -17,17 +17,11 @@ void ESP::onUpdate(Functions* functions) {
 	if (playerPointer == NULL) { return; }
 
 	PlayerMain* playerMain = *(PlayerMain**)playerPointer;
-	if (playerMain != nullptr)
-	{
+	if (playerMain != nullptr) {
 		CharacterObject* character = functions->get_Character(playerMain);
-		if (character != nullptr)
-		{
+		if (character != nullptr) {
 			std::cout << "Normal way: " << character << std::endl;
 		}
 	}
 	*/
-}
-
-void ESP::init() {
-	addKey(VK_NUMPAD4);
 }

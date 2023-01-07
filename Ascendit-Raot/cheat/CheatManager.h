@@ -8,13 +8,19 @@
 #include "cheats\NoClip.h"
 
 #include <vector>
+#include <array>
+
+constexpr std::array<cstring, 3> categories { "Combat", "Render", "Misc" };
+
+std::vector<Cheat*> cheats(cstring category);
 
 class CheatManager {
 public:
+	std::vector<Cheat*> cheats;
+
 	void init();
 	void add(Cheat cheat);
 	void onUpdate(Functions* functions);
-	std::vector<Cheat*> cheats;
 };
 
 extern CheatManager cheatManager;

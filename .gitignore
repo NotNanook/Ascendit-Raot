@@ -367,3 +367,6 @@ upload.bat
 WinSCP.log
 hashRaot.txt
 Build/
+
+# VS Code files
+.vscode/

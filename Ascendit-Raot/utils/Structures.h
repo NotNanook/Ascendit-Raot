@@ -1,6 +1,8 @@
 #pragma once
 #include <string>
 
+#define cstring const char*
+
 struct PlayerMain {
 	char pad_0000[32]; //0x0000
 	struct MovementManager* movementManager; //0x0020

@@ -3,7 +3,8 @@
 
 class NoShootCooldown : public Cheat {
 public:
-	void init() override;
+	NoShootCooldown() : Cheat("NoShootCooldown", "Combat", { VK_NUMPAD3, 'O' }) {}
+
 	void onUpdate(Functions* functions) override;
 };
 

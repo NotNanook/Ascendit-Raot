@@ -26,3 +26,15 @@ void CheatManager::onUpdate(Functions* functions) {
 		cheat->checkForToggle(functions);
 	}
 }
+
+std::vector<Cheat*> cheats(cstring category) {
+	std::vector<Cheat*> ret;
+
+	for (Cheat* cheat: cheatManager.cheats) {
+		if (cheat->category == category) {
+			ret.push_back(cheat);
+		}
+	}
+
+	return ret;
+}

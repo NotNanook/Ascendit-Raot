@@ -14,8 +14,3 @@ void InfiniteGas::onUpdate(Functions* functions) {
 	
 	equipmentManager->gasModule->gasPercent = 1;
 }
-
-void InfiniteGas::init() {
-	addKey(VK_NUMPAD1);
-	addKey('K');
-}

@@ -18,8 +18,3 @@ void NoShootCooldown::onUpdate(Functions* functions) {
 	character->equipedItem->isLeftLoaded = 1;
 	character->equipedItem->isRightLoaded = 1;
 }
-
-void NoShootCooldown::init() {
-	addKey(VK_NUMPAD3);
-	addKey('O');
-}

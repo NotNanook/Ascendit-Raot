@@ -6,18 +6,12 @@ void drawHelper::drawGui(Functions* functions) {
 	ImGui::Begin("Ascendit Raot", 0, window_flags);
     ImGui::Text("Ascendit Raot");
 
-    if (ImGui::CollapsingHeader("Combat")) {
-        ImGui::Checkbox("Infinite Gas", &infiniteGas.isToggled);
-        ImGui::Checkbox("Infinite Stress", &infiniteStress.isToggled);
-        ImGui::Checkbox("No Shoot Cooldown", &noShootCooldown.isToggled);
-    }
-
-    if (ImGui::CollapsingHeader("Render")) {
-        ImGui::Checkbox("ESP", &esp.isToggled);
-    }
-
-    if (ImGui::CollapsingHeader("Misc")) {
-        ImGui::Checkbox("No Clip", &noClip.isToggled);
+    for (cstring category: categories) {
+        if (ImGui::CollapsingHeader(category)) {
+            for (Cheat* cheat: cheats(category)) {
+                ImGui::Checkbox(cheat->name, &cheat->isToggled);
+            }
+        }
     }
 
     ImGui::End();

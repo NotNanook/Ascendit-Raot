@@ -3,7 +3,8 @@
 
 class ESP : public Cheat {
 public:
-	void init() override;
+	ESP() : Cheat("ESP", "Render", { VK_NUMPAD4 }) {}
+	
 	void onEnable(Functions* functions) override;
 	void onUpdate(Functions* functions) override;
 };

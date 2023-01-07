@@ -42,7 +42,3 @@ void NoClip::onDisable(Functions* functions) {
 	float* noClipAddress = (float*)(xCordPointer + 0x3C);
 	*noClipAddress = -1; // Set this weird variable to -1 and collisions will work again
 }
-
-void NoClip::init() {
-	addKey('N');
-}

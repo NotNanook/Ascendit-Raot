@@ -14,8 +14,3 @@ void InfiniteStress::onUpdate(Functions* functions) {
 	
 	equipmentManager->stressModule->currentStress = 0;
 }
-
-void InfiniteStress::init() {
-	addKey(VK_NUMPAD2);
-	addKey('I');
-}

@@ -3,7 +3,8 @@
 
 class InfiniteStress : public Cheat {
 public:
-	void init() override;
+	InfiniteStress() : Cheat("InfiniteStress", "Combat", { VK_NUMPAD2, 'I' }) {}
+
 	void onUpdate(Functions* functions) override;
 };
 

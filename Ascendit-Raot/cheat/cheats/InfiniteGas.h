@@ -3,7 +3,8 @@
 
 class InfiniteGas : public Cheat {
 public:
-	void init() override;
+	InfiniteGas() : Cheat("InfiniteGas", "Combat", { VK_NUMPAD1, 'K' }) {}
+	
 	void onUpdate(Functions* functions) override;
 };
 
