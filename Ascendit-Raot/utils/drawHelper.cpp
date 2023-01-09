@@ -6,9 +6,9 @@ void drawHelper::drawGui(Functions* functions) {
 	ImGui::Begin("Ascendit Raot", 0, window_flags);
     ImGui::Text("Ascendit Raot");
 
-    for (cstring category: categories) {
+    for (cstring category: CheatManager::categories) {
         if (ImGui::CollapsingHeader(category)) {
-            for (Cheat* cheat: cheats(category)) {
+            for (Cheat* cheat: CheatManager::cheatsByCategory(category)) {
                 ImGui::Checkbox(cheat->name, &cheat->isToggled);
             }
         }

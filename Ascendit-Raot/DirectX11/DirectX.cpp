@@ -239,7 +239,7 @@ HRESULT APIENTRY DirectX::MJPresent(IDXGISwapChain* pSwapChain, UINT SyncInterva
 		RemoveAll(); 
 	}
 
-	cheatManager.onUpdate(&DirectX::functions);
+	CheatManager::onUpdate(&DirectX::functions);
 
 	ImGui_ImplDX11_NewFrame();
 	ImGui_ImplWin32_NewFrame();

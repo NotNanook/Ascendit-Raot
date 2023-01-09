@@ -4,8 +4,8 @@ DWORD WINAPI MainThread(LPVOID lpParameter) {
 	DirectX::preInit(lpParameter);
 
 	bool InitHook = false;
-	while (InitHook == false) {
-		if (DirectX::Init() == true) {
+	while (!InitHook) {
+		if (DirectX::Init()) {
 			DirectX::CreateHook(8, (void**) &DirectX::oIDXGISwapChainPresent, DirectX::MJPresent);
 			DirectX::CreateHook(12, (void**) &DirectX::oID3D11DrawIndexed, DirectX::MJDrawIndexed);
 			InitHook = true;
@@ -21,7 +21,7 @@ DWORD WINAPI MainThread(LPVOID lpParameter) {
 
 	DirectX::functions = Functions(GetModuleHandle("GameAssembly.dll"), GetModuleHandle("UnityPlayer.dll"));
 
-	cheatManager.init();
+	CheatManager::init();
 
 	//FreeConsole();
 	//if (f) fclose(f);
