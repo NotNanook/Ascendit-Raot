@@ -20,7 +20,7 @@
 - Infinite Stress
 - Infinite Gas
 - Infinite Ammo
-- No Clip
+- No Clip (Sometimes crashes)
 
 # Building
 - Build for the x64 Architecture
