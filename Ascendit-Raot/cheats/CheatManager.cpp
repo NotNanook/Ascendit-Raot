@@ -1,4 +1,5 @@
 #include "CheatManager.h"
+#include "DirectX.h"
 
 void CheatManager::init() {
 	for (Cheat* cheat: cheats) {
@@ -6,10 +7,10 @@ void CheatManager::init() {
 	}
 }
 
-void CheatManager::onUpdate(Functions* functions) {
+void CheatManager::checkUserInput() {
 	for (Cheat* cheat: cheats) {
-		cheat->checkForKey(functions);
-		cheat->checkForToggle(functions);
+		if(DirectX::isWindowFocused()) cheat->checkForKey();
+		cheat->checkForToggle();
 	}
 }
 
@@ -23,4 +24,12 @@ std::vector<Cheat*> CheatManager::cheatsByCategory(cstring category) {
 	}
 
 	return ret;
+}
+
+void CheatManager::onRenderUpdate() {
+	for (Cheat* cheat : cheats) {
+		if (cheat->isEnabled) {
+			cheat->onRenderUpdate();
+		}
+	}
 }

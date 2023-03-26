@@ -18,69 +18,11 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="cheat\Cheat.h" />
-    <ClInclude Include="cheat\CheatManager.h" />
-    <ClInclude Include="cheat\cheats\ESP.h" />
-    <ClInclude Include="cheat\cheats\InfiniteGas.h" />
-    <ClInclude Include="cheat\cheats\InfiniteStress.h" />
-    <ClInclude Include="cheat\cheats\NoClip.h" />
-    <ClInclude Include="cheat\cheats\NoShootCooldown.h" />
-    <ClInclude Include="dependencies\ImGui\imconfig.h" />
-    <ClInclude Include="dependencies\ImGui\imgui_impl_dx11.h" />
-    <ClInclude Include="dependencies\ImGui\imgui_impl_win32.h" />
-    <ClInclude Include="dependencies\ImGui\imgui_internal.h" />
-    <ClInclude Include="dependencies\ImGui\imgui.h" />
-    <ClInclude Include="dependencies\ImGui\imstb_rectpack.h" />
-    <ClInclude Include="dependencies\ImGui\imstb_textedit.h" />
-    <ClInclude Include="dependencies\ImGui\imstb_truetype.h" />
-    <ClInclude Include="dependencies\MinHook\Src\buffer.h" />
-    <ClInclude Include="dependencies\MinHook\Src\trampoline.h" />
-    <ClInclude Include="dependencies\MinHook\Src\hde\hde32.h" />
-    <ClInclude Include="dependencies\MinHook\Src\hde\hde64.h" />
-    <ClInclude Include="dependencies\MinHook\Src\hde\pstdint.h" />
-    <ClInclude Include="dependencies\MinHook\Src\hde\table32.h" />
-    <ClInclude Include="dependencies\MinHook\Src\hde\table64.h" />
-    <ClInclude Include="DirectX11\DirectX.h" />
-    <ClInclude Include="hook\hook.h" />
-    <ClInclude Include="utils\Functions.h" />
-    <ClInclude Include="utils\mem.h" />
-    <ClInclude Include="utils\drawHelper.h" />
-    <ClInclude Include="utils\Structures.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="dllmain.cpp" />
-    <ClCompile Include="cheat\Cheat.cpp" />
-    <ClCompile Include="cheat\CheatManager.cpp" />
-    <ClCompile Include="cheat\cheats\ESP.cpp" />
-    <ClCompile Include="cheat\cheats\InfiniteGas.cpp" />
-    <ClCompile Include="cheat\cheats\InfiniteStress.cpp" />
-    <ClCompile Include="cheat\cheats\NoClip.cpp" />
-    <ClCompile Include="cheat\cheats\NoShootCooldown.cpp" />
-    <ClCompile Include="dependencies\ImGui\imgui_demo.cpp" />
-    <ClCompile Include="dependencies\ImGui\imgui_draw.cpp" />
-    <ClCompile Include="dependencies\ImGui\imgui_impl_dx11.cpp" />
-    <ClCompile Include="dependencies\ImGui\imgui_impl_win32.cpp" />
-    <ClCompile Include="dependencies\ImGui\imgui_tables.cpp" />
-    <ClCompile Include="dependencies\ImGui\imgui_widgets.cpp" />
-    <ClCompile Include="dependencies\ImGui\imgui.cpp" />
-    <ClCompile Include="dependencies\MinHook\Src\buffer.c" />
-    <ClCompile Include="dependencies\MinHook\Src\hook.c" />
-    <ClCompile Include="dependencies\MinHook\Src\trampoline.c" />
-    <ClCompile Include="dependencies\MinHook\Src\hde\hde32.c" />
-    <ClCompile Include="dependencies\MinHook\Src\hde\hde64.c" />
-    <ClCompile Include="DirectX11\DirectX.cpp" />
-    <ClCompile Include="hook\hook.cpp" />
-    <ClCompile Include="utils\drawHelper.cpp" />
-    <ClCompile Include="utils\Functions.cpp" />
-    <ClCompile Include="utils\mem.cpp" />
-    <ClCompile Include="utils\Structures.cpp" />
-  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
     <ProjectGuid>{F02C42D5-B256-4195-A40C-35201636BB4F}</ProjectGuid>
-    <RootNamespace>ImGuiHookDX9</RootNamespace>
+    <RootNamespace>AscenditUnityFramework</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -88,14 +30,14 @@
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
-    <CharacterSet>MultiByte</CharacterSet>
+    <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
-    <CharacterSet>MultiByte</CharacterSet>
+    <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
@@ -128,117 +70,136 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <LinkIncremental>true</LinkIncremental>
-    <LibraryPath>$(SolutionDir)\ImGuiHook [Global]\Directories\Microsoft DirectX SDK\Lib\x86;$(LibraryPath)</LibraryPath>
-    <IncludePath>$(WindowsSDK_IncludePath);$(VC_IncludePath);$(SolutionDir)\ImGuiHook [Global]\Directories\Microsoft DirectX SDK\Include;$(SolutionDir)\ImGuiHook [Global]\Directories\MinHook\Include;$(IncludePath)</IncludePath>
-    <TargetName>$(ProjectName) (x86)</TargetName>
-    <OutDir>$(SolutionDir)Build\</OutDir>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <LinkIncremental>false</LinkIncremental>
-    <LibraryPath>$(SolutionDir)\ImGuiHook [Global]\Directories\Microsoft DirectX SDK\Lib\x86;$(LibraryPath)</LibraryPath>
-    <IncludePath>$(WindowsSDK_IncludePath);$(VC_IncludePath);$(SolutionDir)\ImGuiHook [Global]\Directories\Microsoft DirectX SDK\Include;$(SolutionDir)\ImGuiHook [Global]\Directories\MinHook\Include;$(IncludePath)</IncludePath>
-    <TargetName>$(ProjectName) (x86)</TargetName>
-    <OutDir>$(SolutionDir)Build\</OutDir>
-  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <LinkIncremental>true</LinkIncremental>
-    <LibraryPath>$(SolutionDir)\ImGuiHook [Global]\Directories\Microsoft DirectX SDK\Lib\x64;$(LibraryPath)</LibraryPath>
-    <IncludePath>$(WindowsSDK_IncludePath);$(VC_IncludePath);$(SolutionDir)\ImGuiHook [Global]\Directories\Microsoft DirectX SDK\Include;$(SolutionDir)\ImGuiHook [Global]\Directories\MinHook\Include;$(IncludePath)</IncludePath>
-    <TargetName>$(ProjectName)</TargetName>
-    <OutDir>$(SolutionDir)Build\</OutDir>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(SolutionDir)Ascendit-Raot\dependencies\MinHook\Include;$(SolutionDir)Ascendit-Raot\dependencies\Microsoft DirectX SDK\Include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)Ascendit-Raot\dependencies\Microsoft DirectX SDK\Lib\x64;$(LibraryPath)</LibraryPath>
+    <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(SolutionDir)Ascendit-Raot\dependencies\MinHook\Include;$(SolutionDir)Ascendit-Raot\dependencies\Microsoft DirectX SDK\Include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)Ascendit-Raot\dependencies\Microsoft DirectX SDK\Lib\x64;$(LibraryPath)</LibraryPath>
     <LinkIncremental>false</LinkIncremental>
-    <LibraryPath>$(SolutionDir)\ImGuiHook [Global]\Directories\Microsoft DirectX SDK\Lib\x64;$(LibraryPath)</LibraryPath>
-    <IncludePath>E:\ClientCoding\Ascendit-Raot\Ascendit-Raot\Directories\IL2CPP_Resolver;$(WindowsSDK_IncludePath);$(VC_IncludePath);$(SolutionDir)\ImGuiHook [Global]\Directories\Microsoft DirectX SDK\Include;$(SolutionDir)\ImGuiHook [Global]\Directories\MinHook\Include;$(IncludePath)</IncludePath>
-    <TargetName>$(ProjectName)</TargetName>
-    <OutDir>$(SolutionDir)Build\</OutDir>
-    <SourcePath>$(VC_SourcePath);$(SourcePath)</SourcePath>
+  </PropertyGroup>
+  <PropertyGroup Label="Vcpkg" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <VcpkgUseStatic>true</VcpkgUseStatic>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <WarningLevel>TurnOffAllWarnings</WarningLevel>
+      <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;ASCENDITUNITYFRAMEWORK_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard>stdcpp17</LanguageStandard>
-      <LanguageStandard_C>stdc17</LanguageStandard_C>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
-      <AdditionalOptions>/ignore:4099 %(AdditionalOptions)</AdditionalOptions>
+      <EnableUAC>false</EnableUAC>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
-      <WarningLevel>TurnOffAllWarnings</WarningLevel>
+      <WarningLevel>Level3</WarningLevel>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;ASCENDITUNITYFRAMEWORK_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard>stdcpp17</LanguageStandard>
-      <LanguageStandard_C>stdc17</LanguageStandard_C>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
-      <AdditionalOptions>/ignore:4099 %(AdditionalOptions)</AdditionalOptions>
+      <EnableUAC>false</EnableUAC>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <WarningLevel>TurnOffAllWarnings</WarningLevel>
+      <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;ASCENDITUNITYFRAMEWORK_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>$(SolutionDir)Ascendit-Raot\dependencies;$(SolutionDir)Ascendit-Raot\rendering;$(SolutionDir)Ascendit-Raot\config;$(SolutionDir)Ascendit-Raot\cheats;$(SolutionDir)Ascendit-Raot\utility;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
-      <AdditionalIncludeDirectories>E:\ClientCoding\Ascendit-Raot\Ascendit-Raot;E:\ClientCoding\Ascendit-Raot\Ascendit-Raot\DirectX11;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
-      <AdditionalOptions>/ignore:4099 %(AdditionalOptions)</AdditionalOptions>
+      <EnableUAC>false</EnableUAC>
+      <AdditionalLibraryDirectories>$(SolutionDir)Ascendit-Unity-Framework\dependencies\Microsoft DirectX SDK\Lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
-    <PostBuildEvent>
-      <Command>
-      </Command>
-    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <WarningLevel>TurnOffAllWarnings</WarningLevel>
+      <WarningLevel>Level3</WarningLevel>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;ASCENDITUNITYFRAMEWORK_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>$(SolutionDir)Ascendit-Raot\dependencies;$(SolutionDir)Ascendit-Raot\rendering;$(SolutionDir)Ascendit-Raot\config;$(SolutionDir)Ascendit-Raot\cheats;$(SolutionDir)Ascendit-Raot\utility;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
-      <AdditionalIncludeDirectories>E:\ClientCoding\Ascendit-Raot\Ascendit-Raot\DirectX11;E:\ClientCoding\Ascendit-Raot\Ascendit-Raot;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
-      <AdditionalOptions>/ignore:4099 %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalLibraryDirectories>E:\ClientCoding\Ascendit-Raot\Ascendit-Raot\DirectX11;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <EnableUAC>false</EnableUAC>
+      <AdditionalLibraryDirectories>$(SolutionDir)Ascendit-Unity-Framework\dependencies\Microsoft DirectX SDK\Lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
-    <PostBuildEvent>
-      <Command>call E:\ClientCoding\Ascendit-Raot\upload.bat</Command>
-    </PostBuildEvent>
   </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="cheats\Cheat.cpp" />
+    <ClCompile Include="cheats\CheatManager.cpp" />
+    <ClCompile Include="cheats\cheats\InfiniteGas.cpp" />
+    <ClCompile Include="cheats\cheats\InfiniteStress.cpp" />
+    <ClCompile Include="cheats\cheats\NoClip.cpp" />
+    <ClCompile Include="cheats\cheats\NoShootCooldown.cpp" />
+    <ClCompile Include="dependencies\ImGui\imgui.cpp" />
+    <ClCompile Include="dependencies\ImGui\imgui_demo.cpp" />
+    <ClCompile Include="dependencies\ImGui\imgui_draw.cpp" />
+    <ClCompile Include="dependencies\ImGui\imgui_impl_dx11.cpp" />
+    <ClCompile Include="dependencies\ImGui\imgui_impl_win32.cpp" />
+    <ClCompile Include="dependencies\ImGui\imgui_tables.cpp" />
+    <ClCompile Include="dependencies\ImGui\imgui_widgets.cpp" />
+    <ClCompile Include="dllmain.cpp" />
+    <ClCompile Include="rendering\DirectX.cpp" />
+    <ClCompile Include="rendering\Gui.cpp" />
+    <ClCompile Include="utility\Functions.cpp" />
+    <ClCompile Include="utility\utils.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="cheats\Cheat.h" />
+    <ClInclude Include="cheats\CheatManager.h" />
+    <ClInclude Include="cheats\cheats\InfiniteGas.h" />
+    <ClInclude Include="cheats\cheats\InfiniteStress.h" />
+    <ClInclude Include="cheats\cheats\NoClip.h" />
+    <ClInclude Include="cheats\cheats\NoShootCooldown.h" />
+    <ClInclude Include="dependencies\ImGui\imconfig.h" />
+    <ClInclude Include="dependencies\ImGui\imgui.h" />
+    <ClInclude Include="dependencies\ImGui\imgui_impl_dx11.h" />
+    <ClInclude Include="dependencies\ImGui\imgui_impl_win32.h" />
+    <ClInclude Include="dependencies\ImGui\imgui_internal.h" />
+    <ClInclude Include="dependencies\ImGui\imstb_rectpack.h" />
+    <ClInclude Include="dependencies\ImGui\imstb_textedit.h" />
+    <ClInclude Include="dependencies\ImGui\imstb_truetype.h" />
+    <ClInclude Include="rendering\DirectX.h" />
+    <ClInclude Include="rendering\Gui.h" />
+    <ClInclude Include="utility\Functions.h" />
+    <ClInclude Include="utility\Structures.h" />
+    <ClInclude Include="utility\utils.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

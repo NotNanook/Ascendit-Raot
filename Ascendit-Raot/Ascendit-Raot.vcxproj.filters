@@ -1,49 +1,94 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+    <Filter Include="Utility">
+      <UniqueIdentifier>{e07fb6f7-5cad-448b-be25-9967d3233d18}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Cheats">
+      <UniqueIdentifier>{5a80f538-888e-4b95-b921-14ab848a1d72}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DirectX">
+      <UniqueIdentifier>{eda4883e-7181-45d7-adad-f40ad9252c51}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Config">
+      <UniqueIdentifier>{c5a6d312-5c32-4873-bf16-2b2de9d7f439}</UniqueIdentifier>
+    </Filter>
     <Filter Include="ImGui">
-      <UniqueIdentifier>{1480e7a2-9058-4539-81d7-afb30d8efa0c}</UniqueIdentifier>
+      <UniqueIdentifier>{4838260a-afc4-4a39-ac0e-68b6d0b11f41}</UniqueIdentifier>
     </Filter>
-    <Filter Include="DirectX Hook">
-      <UniqueIdentifier>{617e796f-5074-462e-9aef-0330d29b57b0}</UniqueIdentifier>
+    <Filter Include="Rendering">
+      <UniqueIdentifier>{58744a24-8f15-414d-a751-9e581b3e4f3a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="DirectX Hook\MinHook">
-      <UniqueIdentifier>{1835cbb2-7e0a-44dc-abb8-dec90bf52bd0}</UniqueIdentifier>
+    <Filter Include="Main">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
-    <Filter Include="DirectX Hook\MinHook\hde">
-      <UniqueIdentifier>{6d1553c4-e7d3-4dbb-9957-9cbeddb4a71e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{8828bc04-0c2a-43c9-af5d-28e29f26ff42}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="IL2CPP-Resolver">
-      <UniqueIdentifier>{0e350d4c-e608-4f57-99ff-38bf0b6c1abd}</UniqueIdentifier>
+    <Filter Include="Cheats\Modules">
+      <UniqueIdentifier>{2694e5f1-9b2c-4f67-8339-c05a2d9aea82}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="DirectX11\DirectX.h">
-      <Filter>DirectX Hook</Filter>
+    <ClCompile Include="cheats\Cheat.cpp">
+      <Filter>Cheats</Filter>
+    </ClCompile>
+    <ClCompile Include="cheats\CheatManager.cpp">
+      <Filter>Cheats</Filter>
+    </ClCompile>
+    <ClCompile Include="dependencies\ImGui\imgui.cpp">
+      <Filter>ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="dependencies\ImGui\imgui_demo.cpp">
+      <Filter>ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="dependencies\ImGui\imgui_draw.cpp">
+      <Filter>ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="dependencies\ImGui\imgui_impl_dx11.cpp">
+      <Filter>ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="dependencies\ImGui\imgui_impl_win32.cpp">
+      <Filter>ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="dependencies\ImGui\imgui_tables.cpp">
+      <Filter>ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="dependencies\ImGui\imgui_widgets.cpp">
+      <Filter>ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="dllmain.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="rendering\Gui.cpp">
+      <Filter>Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="utility\Functions.cpp">
+      <Filter>Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="utility\utils.cpp">
+      <Filter>Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="rendering\DirectX.cpp">
+      <Filter>DirectX</Filter>
+    </ClCompile>
+    <ClCompile Include="cheats\cheats\InfiniteGas.cpp">
+      <Filter>Cheats\Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="cheats\cheats\InfiniteStress.cpp">
+      <Filter>Cheats\Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="cheats\cheats\NoShootCooldown.cpp">
+      <Filter>Cheats\Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="cheats\cheats\NoClip.cpp">
+      <Filter>Cheats\Modules</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="cheats\Cheat.h">
+      <Filter>Cheats</Filter>
     </ClInclude>
-    <ClInclude Include="dependencies\MinHook\Src\buffer.h">
-      <Filter>DirectX Hook\MinHook</Filter>
-    </ClInclude>
-    <ClInclude Include="dependencies\MinHook\Src\trampoline.h">
-      <Filter>DirectX Hook\MinHook</Filter>
-    </ClInclude>
-    <ClInclude Include="dependencies\MinHook\Src\hde\hde32.h">
-      <Filter>DirectX Hook\MinHook\hde</Filter>
-    </ClInclude>
-    <ClInclude Include="dependencies\MinHook\Src\hde\hde64.h">
-      <Filter>DirectX Hook\MinHook\hde</Filter>
-    </ClInclude>
-    <ClInclude Include="dependencies\MinHook\Src\hde\pstdint.h">
-      <Filter>DirectX Hook\MinHook\hde</Filter>
-    </ClInclude>
-    <ClInclude Include="dependencies\MinHook\Src\hde\table32.h">
-      <Filter>DirectX Hook\MinHook\hde</Filter>
-    </ClInclude>
-    <ClInclude Include="dependencies\MinHook\Src\hde\table64.h">
-      <Filter>DirectX Hook\MinHook\hde</Filter>
+    <ClInclude Include="cheats\CheatManager.h">
+      <Filter>Cheats</Filter>
     </ClInclude>
     <ClInclude Include="dependencies\ImGui\imconfig.h">
       <Filter>ImGui</Filter>
@@ -69,141 +114,32 @@
     <ClInclude Include="dependencies\ImGui\imstb_truetype.h">
       <Filter>ImGui</Filter>
     </ClInclude>
-    <ClInclude Include="cheat\Cheat.h">
-      <Filter>Cheats</Filter>
+    <ClInclude Include="rendering\Gui.h">
+      <Filter>Rendering</Filter>
     </ClInclude>
-    <ClInclude Include="cheat\CheatManager.h">
-      <Filter>Cheats</Filter>
+    <ClInclude Include="utility\Functions.h">
+      <Filter>Utility</Filter>
     </ClInclude>
-    <ClInclude Include="cheat\cheats\ESP.h">
-      <Filter>Cheats</Filter>
+    <ClInclude Include="utility\Structures.h">
+      <Filter>Utility</Filter>
     </ClInclude>
-    <ClInclude Include="cheat\cheats\InfiniteGas.h">
-      <Filter>Cheats</Filter>
+    <ClInclude Include="utility\utils.h">
+      <Filter>Utility</Filter>
     </ClInclude>
-    <ClInclude Include="cheat\cheats\InfiniteStress.h">
-      <Filter>Cheats</Filter>
+    <ClInclude Include="rendering\DirectX.h">
+      <Filter>DirectX</Filter>
     </ClInclude>
-    <ClInclude Include="cheat\cheats\NoShootCooldown.h">
-      <Filter>Cheats</Filter>
+    <ClInclude Include="cheats\cheats\InfiniteGas.h">
+      <Filter>Cheats\Modules</Filter>
     </ClInclude>
-    <ClInclude Include="hook\hook.h">
-      <Filter>Hook</Filter>
+    <ClInclude Include="cheats\cheats\InfiniteStress.h">
+      <Filter>Cheats\Modules</Filter>
     </ClInclude>
-    <ClInclude Include="utils\Structures.h">
-      <Filter>Utils</Filter>
+    <ClInclude Include="cheats\cheats\NoShootCooldown.h">
+      <Filter>Cheats\Modules</Filter>
     </ClInclude>
-    <ClInclude Include="utils\drawHelper.h">
-      <Filter>Utils</Filter>
+    <ClInclude Include="cheats\cheats\NoClip.h">
+      <Filter>Cheats\Modules</Filter>
     </ClInclude>
-    <ClInclude Include="utils\Functions.h">
-      <Filter>Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="utils\mem.h">
-      <Filter>Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="cheat\cheats\NoClip.h">
-      <Filter>Cheats</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="dependencies\MinHook\Src\buffer.c">
-      <Filter>DirectX Hook\MinHook</Filter>
-    </ClCompile>
-    <ClCompile Include="dependencies\MinHook\Src\hook.c">
-      <Filter>DirectX Hook\MinHook</Filter>
-    </ClCompile>
-    <ClCompile Include="dependencies\MinHook\Src\trampoline.c">
-      <Filter>DirectX Hook\MinHook</Filter>
-    </ClCompile>
-    <ClCompile Include="dependencies\MinHook\Src\hde\hde32.c">
-      <Filter>DirectX Hook\MinHook\hde</Filter>
-    </ClCompile>
-    <ClCompile Include="dependencies\MinHook\Src\hde\hde64.c">
-      <Filter>DirectX Hook\MinHook\hde</Filter>
-    </ClCompile>
-    <ClCompile Include="dllmain.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="dependencies\ImGui\imgui.cpp">
-      <Filter>ImGui</Filter>
-    </ClCompile>
-    <ClCompile Include="dependencies\ImGui\imgui_demo.cpp">
-      <Filter>ImGui</Filter>
-    </ClCompile>
-    <ClCompile Include="dependencies\ImGui\imgui_draw.cpp">
-      <Filter>ImGui</Filter>
-    </ClCompile>
-    <ClCompile Include="dependencies\ImGui\imgui_impl_dx11.cpp">
-      <Filter>ImGui</Filter>
-    </ClCompile>
-    <ClCompile Include="dependencies\ImGui\imgui_impl_win32.cpp">
-      <Filter>ImGui</Filter>
-    </ClCompile>
-    <ClCompile Include="dependencies\ImGui\imgui_tables.cpp">
-      <Filter>ImGui</Filter>
-    </ClCompile>
-    <ClCompile Include="dependencies\ImGui\imgui_widgets.cpp">
-      <Filter>ImGui</Filter>
-    </ClCompile>
-    <ClCompile Include="cheat\Cheat.cpp">
-      <Filter>Cheats</Filter>
-    </ClCompile>
-    <ClCompile Include="cheat\CheatManager.cpp">
-      <Filter>Cheats</Filter>
-    </ClCompile>
-    <ClCompile Include="cheat\cheats\ESP.cpp">
-      <Filter>Cheats</Filter>
-    </ClCompile>
-    <ClCompile Include="cheat\cheats\InfiniteGas.cpp">
-      <Filter>Cheats</Filter>
-    </ClCompile>
-    <ClCompile Include="cheat\cheats\InfiniteStress.cpp">
-      <Filter>Cheats</Filter>
-    </ClCompile>
-    <ClCompile Include="cheat\cheats\NoShootCooldown.cpp">
-      <Filter>Cheats</Filter>
-    </ClCompile>
-    <ClCompile Include="hook\hook.cpp">
-      <Filter>Hook</Filter>
-    </ClCompile>
-    <ClCompile Include="utils\Structures.cpp">
-      <Filter>Utils</Filter>
-    </ClCompile>
-    <ClCompile Include="utils\drawHelper.cpp">
-      <Filter>Utils</Filter>
-    </ClCompile>
-    <ClCompile Include="utils\Functions.cpp">
-      <Filter>Utils</Filter>
-    </ClCompile>
-    <ClCompile Include="utils\mem.cpp">
-      <Filter>Utils</Filter>
-    </ClCompile>
-    <ClCompile Include="DirectX11\DirectX.cpp">
-      <Filter>DirectX Hook</Filter>
-    </ClCompile>
-    <ClCompile Include="cheat\cheats\NoClip.cpp">
-      <Filter>Cheats</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="Hook">
-      <UniqueIdentifier>{3fa386b1-42ad-4d92-9f8c-3ed4a6e0b7a3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Cheats">
-      <UniqueIdentifier>{131c7790-d0dc-4802-a11f-d8a47ae1594c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Utils">
-      <UniqueIdentifier>{de6191e4-a16a-4541-accf-37e9bfc76a19}</UniqueIdentifier>
-    </Filter>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="dllmain.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
 </Project>

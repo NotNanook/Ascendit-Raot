@@ -1,16 +1,18 @@
 #include "InfiniteGas.h"
+#include "Functions.h"
+#include "Structures.h"
 
 InfiniteGas infiniteGas;
 
-void InfiniteGas::onUpdate(Functions* functions) {
-	uintptr_t playerPointer = mem::FindDMAAddy(functions->dllGameBaseOffset, { 0xB8, 0x0 });
+void InfiniteGas::onRenderUpdate() {
+	uintptr_t playerPointer = utils::FindDMAAddy(Functions::gameAssemblyBase + 0x025A0E70, { 0xB8, 0x0 });
 	if (playerPointer == NULL) { return; }
 
-	PlayerMain* playerMain = *(PlayerMain**) playerPointer;
+	PlayerMain* playerMain = *(PlayerMain**)playerPointer;
 	if (playerMain == nullptr) { return; }
 
 	EquipmentManager* equipmentManager = playerMain->equipmentManager;
 	if (equipmentManager == nullptr) { return; }
-	
+
 	equipmentManager->gasModule->gasPercent = 1;
 }

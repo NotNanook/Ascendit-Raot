@@ -1,6 +1,16 @@
+#include "CheatManager.h"
 #include "DirectX.h"
+#include "Gui.h"
+#include "Functions.h"
+#include <Psapi.h>
 
-bool DirectX::preInit(LPVOID _lpParameter) {
+bool DirectX::isWindowFocused() {
+	DWORD ForegroundWindowProcessID;
+	GetWindowThreadProcessId(GetForegroundWindow(), &ForegroundWindowProcessID);
+	return GetCurrentProcessId() == ForegroundWindowProcessID;
+}
+
+bool DirectX::getWindowInformation() {
 	bool WindowFocus = false;
 	while (WindowFocus == false) {
 		DWORD ForegroundWindowProcessID;
@@ -17,15 +27,15 @@ bool DirectX::preInit(LPVOID _lpParameter) {
 			WindowHeight = TempRect.bottom - TempRect.top;
 
 			char TempTitle[MAX_PATH];
-			GetWindowText(Hwnd, TempTitle, sizeof(TempTitle));
+			GetWindowTextA(Hwnd, TempTitle, sizeof(TempTitle));
 			Title = TempTitle;
 
 			char TempClassName[MAX_PATH];
-			GetClassName(Hwnd, TempClassName, sizeof(TempClassName));
+			GetClassNameA(Hwnd, TempClassName, sizeof(TempClassName));
 			ClassName = TempClassName;
 
 			char TempPath[MAX_PATH];
-			GetModuleFileNameEx(Handle, NULL, TempPath, sizeof(TempPath));
+			GetModuleFileNameExA(Handle, NULL, TempPath, sizeof(TempPath));
 			Path = TempPath;
 
 			WindowFocus = true;
@@ -33,7 +43,19 @@ bool DirectX::preInit(LPVOID _lpParameter) {
 		}
 	}
 
-	lpParameter = _lpParameter;
+	return false;
+}
+
+void DirectX::hookDirectX() {
+	bool InitHook = false;
+	while (!InitHook) {
+		if (Init()) {
+			utils::CreateHook(8, (void**)&oIDXGISwapChainPresent, MJPresent);
+			utils::CreateHook(12, (void**)&oID3D11DrawIndexed, MJDrawIndexed);
+			InitHook = true;
+		}
+	}
+	return;
 }
 
 bool DirectX::Init() {
@@ -41,7 +63,7 @@ bool DirectX::Init() {
 		return false;
 	}
 
-	HMODULE D3D11Module = GetModuleHandle("d3d11.dll");
+	HMODULE D3D11Module = GetModuleHandleA("d3d11.dll");
 	if (D3D11Module == NULL) {
 		DeleteWindow();
 		return false;
@@ -56,8 +78,16 @@ bool DirectX::Init() {
 	D3D_FEATURE_LEVEL FeatureLevel;
 	const D3D_FEATURE_LEVEL FeatureLevels[] = { D3D_FEATURE_LEVEL_10_1, D3D_FEATURE_LEVEL_11_0 };
 
+	DEVMODE devMode;
+	int refreshRate = 60;
+	devMode.dmSize = sizeof(DEVMODE);
+	if (EnumDisplaySettings(NULL, ENUM_CURRENT_SETTINGS, &devMode))
+	{
+		refreshRate = devMode.dmDisplayFrequency;
+	}
+
 	DXGI_RATIONAL RefreshRate;
-	RefreshRate.Numerator = 60;
+	RefreshRate.Numerator = refreshRate;
 	RefreshRate.Denominator = 1;
 
 	DXGI_MODE_DESC BufferDesc;
@@ -104,12 +134,12 @@ bool DirectX::Init() {
 		return false;
 	}
 
-	MethodsTable = (uint64_t*)::calloc(205, sizeof(uint64_t));
-	memcpy(MethodsTable, *(uint64_t**)SwapChain, 18 * sizeof(uint64_t));
-	memcpy(MethodsTable + 18, *(uint64_t**)Device, 43 * sizeof(uint64_t));
-	memcpy(MethodsTable + 18 + 43, *(uint64_t**)Context, 144 * sizeof(uint64_t));
+	utils::MethodsTable = (uint64_t*)::calloc(205, sizeof(uint64_t));
 
-	MH_Initialize();
+	memcpy(utils::MethodsTable, *(uint64_t**)SwapChain, 18 * sizeof(uint64_t));
+	memcpy(utils::MethodsTable + 18, *(uint64_t**)Device, 43 * sizeof(uint64_t));
+	memcpy(utils::MethodsTable + 18 + 43, *(uint64_t**)Context, 144 * sizeof(uint64_t));
+
 	SwapChain->Release();
 	SwapChain = NULL;
 	Device->Release();
@@ -118,14 +148,6 @@ bool DirectX::Init() {
 	Context = NULL;
 	DeleteWindow();
 	return true;
-}
-
-// maybe unused?
-bool DirectX::CheckDirectXVersion() {
-	if (GetModuleHandle("d3d11.dll") != NULL) {
-		return true;
-	}
-	return false;
 }
 
 bool DirectX::InitWindow() {
@@ -158,36 +180,8 @@ bool DirectX::DeleteWindow() {
 	return true;
 }
 
-bool DirectX::CreateHook(uint16_t Index, void** Original, void* Function) {
-	assert(Index >= 0 && Original != NULL && Function != NULL);
-	void* target = (void*)MethodsTable[Index];
-	if (MH_CreateHook(target, Function, Original) != MH_OK || MH_EnableHook(target) != MH_OK) {
-		return false;
-	}
-	return true;
-}
-
-void DirectX::DisableHook(uint16_t Index) {
-	assert(Index >= 0);
-	MH_DisableHook((void*)MethodsTable[Index]);
-}
-
-void DirectX::RemoveAll() {
-	MH_RemoveHook(MH_ALL_HOOKS);
-	MH_Uninitialize();
-
-	ImGui_ImplDX11_Shutdown();
-	ImGui_ImplWin32_Shutdown();
-	ImGui::DestroyContext();
-
-	free(MethodsTable);
-	MethodsTable = NULL;
-
-	FreeLibraryAndExitThread((HMODULE)lpParameter, TRUE);
-}
-
 LRESULT APIENTRY DirectX::WndProcFunc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam) {
-	if (ShowMenu && ImGui_Initialised) {
+	if (Gui::isEnabled && ImGui_Initialised) {
 		ImGui_ImplWin32_WndProcHandler(hwnd, uMsg, wParam, lParam);
 		return true;
 	}
@@ -219,35 +213,35 @@ HRESULT APIENTRY DirectX::MJPresent(IDXGISwapChain* pSwapChain, UINT SyncInterva
 			ImGui_ImplDX11_CreateDeviceObjects();
 			ImGui::GetIO().ImeWindowHandle = Hwnd;
 			WndProc = (WNDPROC)SetWindowLongPtr(Hwnd, GWLP_WNDPROC, (__int3264)(LONG_PTR)WndProcFunc);
-			drawHelper::setStyle();
+			Gui::setStyle();
 			ImGui_Initialised = true;
 		}
 	}
-	// Menu State
-	if ((GetAsyncKeyState(VK_RSHIFT) & 1) || (GetAsyncKeyState(VK_ESCAPE) & 1 && ShowMenu)) {
-		if (!ShowMenu) {
-			drawHelper::lastState = functions.get_lockState();
-			functions.set_lockState(None);
+	
+	CheatManager::checkUserInput();
+
+	if ((GetAsyncKeyState(VK_RSHIFT) & 1) || (GetAsyncKeyState(VK_ESCAPE) & 1 && Gui::isEnabled)) {
+		if (!Gui::isEnabled) {
+			lastCursorState = Functions::getLockState();
+			Functions::setLockState(None);
 		}
 		else {
-			functions.set_lockState(drawHelper::lastState);
+			Functions::setLockState(lastCursorState);
 		}
-		ShowMenu = !ShowMenu;
+		Gui::isEnabled = !Gui::isEnabled;
 	}
 
 	if (GetAsyncKeyState(VK_NUMPAD0) & 1) { 
-		RemoveAll(); 
+		utils::RemoveAllHooks();
+		return oIDXGISwapChainPresent(pSwapChain, SyncInterval, Flags);
 	}
-
-	CheatManager::onUpdate(&DirectX::functions);
 
 	ImGui_ImplDX11_NewFrame();
 	ImGui_ImplWin32_NewFrame();
 	ImGui::NewFrame();
-	ImGui::GetIO().MouseDrawCursor = ShowMenu;
-	if (ShowMenu == true) {
-		drawHelper::drawGui(&functions);
-	}
+	ImGui::GetIO().MouseDrawCursor = Gui::isEnabled;
+	if (Gui::isEnabled == true) Gui::drawGui();
+	CheatManager::onRenderUpdate();
 	ImGui::EndFrame();
 	ImGui::Render();
 	DeviceContext->OMSetRenderTargets(1, &RenderTargetView, NULL);

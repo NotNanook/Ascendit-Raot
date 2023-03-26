@@ -1,7 +1,23 @@
 #pragma once
 #include <string>
 
-#define cstring const char*
+// --------------------- System structs ---------------------
+struct Transform {};
+
+struct Vector3 {
+	float x;
+	float y;
+	float z;
+};
+
+// --------------------- Game structs ---------------------
+struct ClientPlayerInstance {};
+
+struct MirrorClientObject {
+	//char pad_0000[0xD7];
+	//bool isDisplayingHudInfo;
+	char pad_0000[224]; //0x0000
+};
 
 struct PlayerMain {
 	char pad_0000[32]; //0x0000
@@ -146,23 +162,27 @@ struct WeaponParryData {
 	float defensiveWindowTime; //0x0014
 }; //Size: 0x0018
 
-struct MirrorClientObject {
-	char pad_0000[104]; //0x0000
-	std::string userName; //0x0068
-};
-
-struct Vector3 {
-	float x;
-	float y;
-	float z;
-};
-
-struct Transform {};
-
-struct UnityScene {};
-
 enum CursorLockMode {
 	None,
 	Locked,
 	Confined
+};
+
+enum Character
+{
+	Nochar,
+	Mikasa,
+	Eren,
+	Armin,
+	Jean,
+	Lana,
+	Levi,
+	Sasha,
+	Annie,
+	Hange,
+	Connie,
+	Reiner,
+	Bertolt,
+	Erwin,
+	Historia
 };

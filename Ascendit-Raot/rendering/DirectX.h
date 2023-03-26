@@ -1,27 +1,20 @@
 #pragma once
-#include <cassert>
 #include <dxgi.h>
 #include <d3d11.h>
 
-#include "../utils/drawHelper.h"
-#include "../cheat/CheatManager.h"
+#include "utils.h"
+#include "Structures.h"
 
-#include "../dependencies/MinHook/Include/MinHook.h"
-#include "../dependencies/ImGui/imgui_impl_dx11.h"
-#include "../dependencies/ImGui/imgui_impl_win32.h"
-#include "../dependencies/ImGui/imgui.h"
+#include "ImGui/imgui_impl_dx11.h"
+#include "ImGui/imgui_impl_win32.h"
+#include "ImGui/imgui.h"
 
 class DirectX {
 
 public:
-	static bool preInit(LPVOID lpParameter);
-	static bool Init();
-	static bool CheckDirectXVersion();
-	static bool InitWindow();
-	static bool DeleteWindow();
-	static bool CreateHook(uint16_t Index, void** Original, void* Function);
-	static void DisableHook(uint16_t Index);
-	static void RemoveAll();
+	static bool isWindowFocused();
+	static bool getWindowInformation();
+	static void hookDirectX();
 
 	static HRESULT APIENTRY MJPresent(IDXGISwapChain* pSwapChain, UINT SyncInterval, UINT Flags);
 	static void APIENTRY MJDrawIndexed(ID3D11DeviceContext* pContext, UINT IndexCount, UINT StartIndexLocation, INT BaseVertexLocation);
@@ -35,13 +28,9 @@ public:
 
 	inline static WNDCLASSEX WindowClass;
 	inline static HWND WindowHwnd;
-	inline static uint64_t* MethodsTable = NULL;
-	inline static int D3D11 = 3;
 
-	inline static bool ShowMenu = false;
 	inline static bool ImGui_Initialised = false;
-
-	inline static Functions functions = Functions(GetModuleHandle(NULL), GetModuleHandle(NULL));
+	inline static CursorLockMode lastCursorState = None;
 
 	inline static DWORD ID;
 	inline static HANDLE Handle;
@@ -58,9 +47,10 @@ public:
 	inline static ID3D11DeviceContext* DeviceContext;
 	inline static ID3D11RenderTargetView* RenderTargetView;
 
-	inline static LPVOID lpParameter;
+private:
+	static bool Init();
+	static bool InitWindow();
+	static bool DeleteWindow();
 };
-
-// Things that cant be static because idk
 
 extern IMGUI_IMPL_API LRESULT ImGui_ImplWin32_WndProcHandler(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);

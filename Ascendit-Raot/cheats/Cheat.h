@@ -1,5 +1,6 @@
 #pragma once
-#include "..\utils\Functions.h"
+#include "utils.h"
+#include <vector>
 
 class Cheat {
 public:
@@ -13,10 +14,16 @@ public:
 		: name(name), category(category), keys(keys) {}
 
 	void virtual init() {}
-	void virtual onEnable(Functions* functions) {}
-	void virtual onDisable(Functions* functions) {}
-	void virtual onUpdate(Functions* functions) {}
-	void checkForKey(Functions* functions);
-	void checkForToggle(Functions* functions);
+	void virtual onEnable() {}
+	void virtual onDisable() {}
+	void checkForKey();
+	void checkForToggle();
 	void addKey(int key);
+
+	/*
+		Gets called every frame. Use this if:
+		- Module has to change global game value every tick
+		- Module draws something
+	*/
+	void virtual onRenderUpdate() {}
 };
