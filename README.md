@@ -4,7 +4,7 @@
   <a href="https://github.com/NotNanook/Ascendit-Raot">
     <img src="images/logoBig.png" alt="Logo" width="500">
   </a>
-
+  <h1></h1>
   <h3 align="center">Ascendit Raot</h3>
 
   <p align="center">
@@ -15,6 +15,9 @@
     <img src="images/Showcase.jpg" alt="Showcase" width="500">
   </a>
 </div>
+<br />
+
+>RAoT is a multiplayer, pvp-focused take on Attack on Titan.  Featuring 14 playable characters, 3 unique weapon classes, and 10 game modes supporting up to 32 players and 4 teams.
 
 # Features
 - Infinite Stress
