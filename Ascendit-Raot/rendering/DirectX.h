@@ -15,6 +15,7 @@ public:
 	static bool isWindowFocused();
 	static bool getWindowInformation();
 	static void hookDirectX();
+	static void DisableHooks();
 
 	static HRESULT APIENTRY MJPresent(IDXGISwapChain* pSwapChain, UINT SyncInterval, UINT Flags);
 	static void APIENTRY MJDrawIndexed(ID3D11DeviceContext* pContext, UINT IndexCount, UINT StartIndexLocation, INT BaseVertexLocation);
