@@ -82,6 +82,9 @@
     <ClCompile Include="cheats\cheats\NoClip.cpp">
       <Filter>Cheats\Modules</Filter>
     </ClCompile>
+    <ClCompile Include="cheats\cheats\ESP.cpp">
+      <Filter>Cheats\Modules</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cheats\Cheat.h">
@@ -139,6 +142,9 @@
       <Filter>Cheats\Modules</Filter>
     </ClInclude>
     <ClInclude Include="cheats\cheats\NoClip.h">
+      <Filter>Cheats\Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="cheats\cheats\ESP.h">
       <Filter>Cheats\Modules</Filter>
     </ClInclude>
   </ItemGroup>

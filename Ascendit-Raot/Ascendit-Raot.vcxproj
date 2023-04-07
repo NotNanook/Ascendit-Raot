@@ -162,6 +162,7 @@
   <ItemGroup>
     <ClCompile Include="cheats\Cheat.cpp" />
     <ClCompile Include="cheats\CheatManager.cpp" />
+    <ClCompile Include="cheats\cheats\ESP.cpp" />
     <ClCompile Include="cheats\cheats\InfiniteGas.cpp" />
     <ClCompile Include="cheats\cheats\InfiniteStress.cpp" />
     <ClCompile Include="cheats\cheats\NoClip.cpp" />
@@ -182,6 +183,7 @@
   <ItemGroup>
     <ClInclude Include="cheats\Cheat.h" />
     <ClInclude Include="cheats\CheatManager.h" />
+    <ClInclude Include="cheats\cheats\ESP.h" />
     <ClInclude Include="cheats\cheats\InfiniteGas.h" />
     <ClInclude Include="cheats\cheats\InfiniteStress.h" />
     <ClInclude Include="cheats\cheats\NoClip.h" />

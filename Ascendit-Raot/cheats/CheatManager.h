@@ -7,17 +7,19 @@
 #include "cheats/InfiniteStress.h"
 #include "cheats/NoShootCooldown.h"
 #include "cheats/NoClip.h"
+#include "cheats/ESP.h"
 
 #include <vector>
 #include <array>
 
 namespace CheatManager {
 	constexpr std::array<cstring, 3> categories { "Combat", "Render", "Misc" };
-	const std::array<Cheat*, 4> cheats{
+	const std::array<Cheat*, 5> cheats{
 		&infiniteGas,
 		&infiniteStress,
 		&noShootCooldown,
-		&noClip
+		&noClip,
+		&esp
 	};
 
 	/*
