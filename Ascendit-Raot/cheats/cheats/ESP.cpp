@@ -45,6 +45,6 @@ void ESP::onRenderUpdate() {
 			screenPos.y = (ImGui::GetIO().DisplaySize.y - screenPos.y);
 		}
 
-		drawList->AddLine(ImVec2(ImGui::GetIO().DisplaySize.x / 2, ImGui::GetIO().DisplaySize.y / 2), ImVec2(screenPos.x, screenPos.y), ImColor(255, 255, 255, 127), 1.0f);
+		drawList->AddLine(ImVec2(ImGui::GetIO().DisplaySize.x / 2, ImGui::GetIO().DisplaySize.y / 2), ImVec2(screenPos.x, screenPos.y), ImColor(255, 255, 255, 170), 1.0f);
 	}
 }

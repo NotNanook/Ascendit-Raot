@@ -22,6 +22,8 @@ namespace CheatManager {
 		&esp
 	};
 
+	std::vector<Cheat*> cheatsByCategory(cstring category);
+
 	/*
 		Call this function ONCE at the beginning of your cheat. 
 		It reads from the config file and automatically adds all hotkeys.
@@ -36,7 +38,8 @@ namespace CheatManager {
 	*/
 	void checkUserInput();
 
-	std::vector<Cheat*> cheatsByCategory(cstring category);
-
+	/*
+		Gets called every frame
+	*/
 	void onRenderUpdate();
 };
