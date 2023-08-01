@@ -23,7 +23,8 @@
 - Infinite Stress
 - Infinite Gas
 - Infinite Ammo
-- No Clip (Sometimes crashes)
+- No Clip
+- ESP (Sometimes crashes)
 
 # Building
 - Build for the x64 Architecture
@@ -36,6 +37,6 @@
 # Todo
 - [X] GUI
 - [X] No Clip
-- [ ] ESP
+- [X] ESP
 - [ ] Config File
 - [ ] Killaura
