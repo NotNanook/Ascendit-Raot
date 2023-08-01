@@ -27,14 +27,16 @@ void ESP::onRenderUpdate() {
 
 	for (int i = 0; i < alivePlayerCount - 1; i++) {
 		MirrorClientObject* playerOne = playerList->content->buffer[i];
-		ClientPlayerInstance* clientPlayerInstance = Functions::getClientPlayer(playerOne);
-		CharacterObject* characterObject = Functions::getCharacterObject(clientPlayerInstance);
-		Transform* transform = Functions::getTransform(*characterObject);
+		ClientPlayerInstance* clientPlayerInstance = Functions::getClientPlayerSafe(playerOne);
+		if (clientPlayerInstance != nullptr) {
+			CharacterObject* characterObject = Functions::getCharacterObject(clientPlayerInstance);
+			Transform* transform = Functions::getTransform(*characterObject);
 
-		Vector3 out;
-		Functions::getPosition(transform, &out);
-		if (out.z > -8) {
-			playerPosList.push_back(out);
+			Vector3 out;
+			Functions::getPosition(transform, &out);
+			if (out.z > -8) {
+				playerPosList.push_back(out);
+			}
 		}
 	}
 

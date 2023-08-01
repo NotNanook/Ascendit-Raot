@@ -1,8 +1,8 @@
 #include "utils.h"
-#include "MinHook/Include/MinHook.h"
+#include "DirectX.h"
+#include "MinHook.h"
 #include <ImGui/imgui_impl_dx11.h>
 #include <ImGui/imgui_impl_win32.h>
-#include "DirectX.h"
 
 void utils::waitBaseModuleLoaded() {
 	while (!GetModuleHandleA("GameAssembly.dll")) {

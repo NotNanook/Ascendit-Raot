@@ -1,6 +1,7 @@
 #pragma once
 #include "Structures.h"
 #include <vector>
+#include <excpt.h>
 
 namespace Functions
 {
@@ -26,6 +27,16 @@ namespace Functions
 
 	typedef ClientPlayerInstance* (__thiscall* _getClientPlayer)(MirrorClientObject* mirrorClientObject);
 	inline _getClientPlayer getClientPlayer;
+
+	inline ClientPlayerInstance* getClientPlayerSafe(MirrorClientObject* mirrorClientObject) {
+		// https://stackoverflow.com/questions/3730654/whats-better-to-use-a-try-except-block-or-a-try-catch-block
+		__try {
+			return getClientPlayer(mirrorClientObject);
+		}
+		__except (EXCEPTION_EXECUTE_HANDLER) {
+			return nullptr;
+		}
+	}
 
 	typedef List<MirrorClientObject*>* (__fastcall* _getAlivePlayers)(void* loadList, void* ignoredClient);
 	inline _getAlivePlayers getAlivePlayers;

@@ -71,12 +71,12 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(SolutionDir)Ascendit-Raot\dependencies\MinHook\Include;$(SolutionDir)Ascendit-Raot\dependencies\Microsoft DirectX SDK\Include;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)Ascendit-Raot\dependencies\MinHook\Src;$(VC_IncludePath);$(WindowsSDK_IncludePath);$(SolutionDir)Ascendit-Raot\dependencies\MinHook\Include;$(SolutionDir)Ascendit-Raot\dependencies\Microsoft DirectX SDK\Include;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)Ascendit-Raot\dependencies\Microsoft DirectX SDK\Lib\x64;$(LibraryPath)</LibraryPath>
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(SolutionDir)Ascendit-Raot\dependencies\MinHook\Include;$(SolutionDir)Ascendit-Raot\dependencies\Microsoft DirectX SDK\Include;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)Ascendit-Raot\dependencies\MinHook\Src;$(VC_IncludePath);$(WindowsSDK_IncludePath);$(SolutionDir)Ascendit-Raot\dependencies\MinHook\Include;$(SolutionDir)Ascendit-Raot\dependencies\Microsoft DirectX SDK\Include;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)Ascendit-Raot\dependencies\Microsoft DirectX SDK\Lib\x64;$(LibraryPath)</LibraryPath>
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
@@ -133,7 +133,7 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
-      <AdditionalLibraryDirectories>$(SolutionDir)Ascendit-Unity-Framework\dependencies\Microsoft DirectX SDK\Lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -156,7 +156,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
-      <AdditionalLibraryDirectories>$(SolutionDir)Ascendit-Unity-Framework\dependencies\Microsoft DirectX SDK\Lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -174,6 +174,11 @@
     <ClCompile Include="dependencies\ImGui\imgui_impl_win32.cpp" />
     <ClCompile Include="dependencies\ImGui\imgui_tables.cpp" />
     <ClCompile Include="dependencies\ImGui\imgui_widgets.cpp" />
+    <ClCompile Include="dependencies\MinHook\Src\buffer.c" />
+    <ClCompile Include="dependencies\MinHook\Src\hde\hde32.c" />
+    <ClCompile Include="dependencies\MinHook\Src\hde\hde64.c" />
+    <ClCompile Include="dependencies\MinHook\Src\hook.c" />
+    <ClCompile Include="dependencies\MinHook\Src\trampoline.c" />
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="rendering\DirectX.cpp" />
     <ClCompile Include="rendering\Gui.cpp" />
@@ -196,6 +201,13 @@
     <ClInclude Include="dependencies\ImGui\imstb_rectpack.h" />
     <ClInclude Include="dependencies\ImGui\imstb_textedit.h" />
     <ClInclude Include="dependencies\ImGui\imstb_truetype.h" />
+    <ClInclude Include="dependencies\MinHook\Src\buffer.h" />
+    <ClInclude Include="dependencies\MinHook\Src\hde\hde32.h" />
+    <ClInclude Include="dependencies\MinHook\Src\hde\hde64.h" />
+    <ClInclude Include="dependencies\MinHook\Src\hde\pstdint.h" />
+    <ClInclude Include="dependencies\MinHook\Src\hde\table32.h" />
+    <ClInclude Include="dependencies\MinHook\Src\hde\table64.h" />
+    <ClInclude Include="dependencies\MinHook\Src\trampoline.h" />
     <ClInclude Include="rendering\DirectX.h" />
     <ClInclude Include="rendering\Gui.h" />
     <ClInclude Include="utility\Functions.h" />

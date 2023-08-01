@@ -14,8 +14,7 @@ template <typename T>
 class Content {
 public:
 	char pad_0000[24];
-	uint32_t sizeBuffer;
-	char pad_0001[4];
+	uint64_t sizeBuffer;
 	T buffer[64];
 };
 

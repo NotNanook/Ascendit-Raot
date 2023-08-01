@@ -1,8 +1,8 @@
-#include "CheatManager.h"
-#include "DirectX.h"
-#include "MinHook.h"
-#include "Functions.h"
 #include "utils.h"
+#include "DirectX.h"
+#include "CheatManager.h"
+#include "Functions.h"
+#include "MinHook.h"
 
 DWORD WINAPI MainThread(LPVOID lpParameter) {
 
