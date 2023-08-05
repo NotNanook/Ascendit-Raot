@@ -34,9 +34,7 @@ void ESP::onRenderUpdate() {
 
 			Vector3 out;
 			Functions::getPosition(transform, &out);
-			if (out.z > -8) {
-				playerPosList.push_back(out);
-			}
+			playerPosList.push_back(out);
 		}
 	}
 

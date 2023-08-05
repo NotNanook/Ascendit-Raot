@@ -31,11 +31,9 @@ void NoClip::onRenderUpdate() {
 
 	uintptr_t xCordPointer = utils::FindDMAAddy(Functions::gamePlayerBase + 0x017A7540, { 0x30, 0x30, 0x0, 0x20 });
 	if (xCordPointer == NULL) { return; }
-	std::cout << "here" << std::endl;
 
 	float* noClipAddress = (float*)(xCordPointer + 0x3C);
 	*noClipAddress = 100; // Set this weird variable to 100 or something big and youll be able to go through walls
-	std::cout << "set" << std::endl;
 }
 
 void NoClip::onDisable() {
