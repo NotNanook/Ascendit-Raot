@@ -40,6 +40,14 @@ namespace Functions
 
 	typedef List<MirrorClientObject*>* (__fastcall* _getAlivePlayers)(void* loadList, void* ignoredClient);
 	inline _getAlivePlayers getAlivePlayers;
+	inline List<MirrorClientObject*>* getAlivePlayersSafe(void* loadList, void* ignoredClient) {
+		__try {
+			return getAlivePlayers(loadList, ignoredClient);
+		}
+		__except (EXCEPTION_EXECUTE_HANDLER) {
+			return nullptr;
+		}
+	}
 
 	typedef Transform* (__thiscall* _getTransform)(CharacterObject clientPlayer);
 	inline _getTransform getTransform;

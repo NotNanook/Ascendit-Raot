@@ -18,13 +18,36 @@ int getAlivePlayerCount(MirrorClientObject* buffer[]) {
 	return count;
 }
 
+float calculateRadius(float distance, float minRadius, float maxRadius) {
+	if (distance <= 100) {
+		return  maxRadius;
+	}
+	else if (distance >= 200) {
+		return minRadius;
+	}
+	else {
+		float scaleFactor = (distance - 100) / (2000 - 100);
+		float scaledRadius = (1 - scaleFactor) * maxRadius + scaleFactor * minRadius;
+		return scaledRadius;
+	}
+}
+
 void ESP::onRenderUpdate() {
-	List<MirrorClientObject*>* playerList = Functions::getAlivePlayers(NULL, NULL);
+	List<MirrorClientObject*>* playerList = Functions::getAlivePlayersSafe(NULL, NULL);
+	if (playerList == nullptr) return;
 	int alivePlayerCount = getAlivePlayerCount(playerList->content->buffer);
 
 	camera = Functions::getCamera();
 	playerPosList.clear();
 
+	// get local player position
+	uintptr_t xCordPointer = utils::FindDMAAddy(Functions::gamePlayerBase + 0x017FF600, { 0x78, 0x28, 0x138, 0x28, 0xA0 });
+	if (xCordPointer == NULL) { return; }
+	float* localXCord = (float*)xCordPointer;
+	float* localYCord = (float*)(xCordPointer+0x4);
+	float* localZCord = (float*)(xCordPointer+0x8);
+
+	ImDrawList* drawList = ImGui::GetBackgroundDrawList();
 	for (int i = 0; i < alivePlayerCount - 1; i++) {
 		MirrorClientObject* playerOne = playerList->content->buffer[i];
 		ClientPlayerInstance* clientPlayerInstance = Functions::getClientPlayerSafe(playerOne);
@@ -32,19 +55,23 @@ void ESP::onRenderUpdate() {
 			CharacterObject* characterObject = Functions::getCharacterObject(clientPlayerInstance);
 			Transform* transform = Functions::getTransform(*characterObject);
 
-			Vector3 out;
-			Functions::getPosition(transform, &out);
-			playerPosList.push_back(out);
-		}
-	}
+			Vector3 vecOther;
+			Functions::getPosition(transform, &vecOther);
+			vecOther.y += 1;
 
-	ImDrawList* drawList = ImGui::GetBackgroundDrawList();
-	for (Vector3 vec : playerPosList) {
-		Vector3 screenPos = Functions::worldToScreenPoint(camera, &vec);
-		if (screenPos.z > 0) {
-			screenPos.y = (ImGui::GetIO().DisplaySize.y - screenPos.y);
-		}
+			Vector3 screenPos = Functions::worldToScreenPoint(camera, &vecOther);
+			if (screenPos.z > 0) {
+				screenPos.y = (ImGui::GetIO().DisplaySize.y - screenPos.y);
+			}
 
-		drawList->AddLine(ImVec2(ImGui::GetIO().DisplaySize.x / 2, ImGui::GetIO().DisplaySize.y / 2), ImVec2(screenPos.x, screenPos.y), ImColor(255, 255, 255, 170), 1.0f);
+			float distance = std::sqrtf((std::pow(*localXCord - vecOther.x, 2) +
+				std::pow(*localYCord - vecOther.y, 2) +
+				std::pow(*localZCord - vecOther.z, 2)));
+
+			if (distance < 1) return; // Dont draw esp on yourself
+
+			float scaledRadius = calculateRadius(distance, 3, 5);
+			drawList->AddCircleFilled(ImVec2(screenPos.x, screenPos.y), scaledRadius, ImColor(255, 255, 255, 170));
+		}
 	}
 }
