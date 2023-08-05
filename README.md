@@ -23,7 +23,8 @@
 - Infinite Stress
 - Infinite Gas
 - Infinite Ammo
-- No Clip (Sometimes crashes)
+- No Clip
+- ESP (Sometimes crashes)
 
 # Building
 - Build for the x64 Architecture
@@ -36,6 +37,9 @@
 # Todo
 - [X] GUI
 - [X] No Clip
-- [ ] ESP
+- [X] ESP
 - [ ] Config File
 - [ ] Killaura
+
+# Support and Contribution
+I always welcome help in each and every way. If you want to donate, [here](https://ko-fi.com/notnanook) is my ko-fi page. If you want to help improve the mod, you are always welcome to create a pull request or message me on my Discord @notnanook for tips or improvements
