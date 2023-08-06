@@ -30,14 +30,14 @@ void NoClip::onRenderUpdate() {
 	*/
 
 	uintptr_t xCordPointer = utils::FindDMAAddy(Functions::gamePlayerBase + 0x017FF600, { 0x78, 0x28, 0x138, 0x28, 0xA0 });	if (xCordPointer == NULL) { return; }
-
+	if (xCordPointer == NULL || utils::isPtrInvalid((void*)xCordPointer)) { return; }
 	float* noClipAddress = (float*)(xCordPointer + 0x3C);
 	*noClipAddress = 100; // Set this weird variable to 100 or something big and youll be able to go through walls
 }
 
 void NoClip::onDisable() {
 	uintptr_t xCordPointer = utils::FindDMAAddy(Functions::gamePlayerBase + 0x017FF600, { 0x78, 0x28, 0x138, 0x28, 0xA0 });	if (xCordPointer == NULL) { return; }
-
+	if (xCordPointer == NULL || utils::isPtrInvalid((void*)xCordPointer)) { return; }
 	float* noClipAddress = (float*)(xCordPointer + 0x3C);
 	*noClipAddress = -1; // Set this weird variable to -1 and collisions will work again
 }

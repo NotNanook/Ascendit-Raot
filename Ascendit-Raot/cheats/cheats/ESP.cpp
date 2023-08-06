@@ -11,7 +11,7 @@ int getAlivePlayerCount(MirrorClientObject* buffer[]) {
 	int count = 0;
 	for (int i = 0; i < 64; i++) {
 		count++;
-		if (buffer[i] == 0x0000000000000000) {
+		if (buffer[i] == 0x0000000000000000 || utils::isPtrInvalid(buffer[i])) {
 			return count;
 		}
 	}
@@ -42,7 +42,7 @@ void ESP::onRenderUpdate() {
 
 	// get local player position
 	uintptr_t xCordPointer = utils::FindDMAAddy(Functions::gamePlayerBase + 0x017FF600, { 0x78, 0x28, 0x138, 0x28, 0xA0 });
-	if (xCordPointer == NULL) { return; }
+	if (xCordPointer == NULL || utils::isPtrInvalid((void*)xCordPointer)) { return; }
 	float* localXCord = (float*)xCordPointer;
 	float* localYCord = (float*)(xCordPointer+0x4);
 	float* localZCord = (float*)(xCordPointer+0x8);
@@ -60,9 +60,7 @@ void ESP::onRenderUpdate() {
 			vecOther.y += 1;
 
 			Vector3 screenPos = Functions::worldToScreenPoint(camera, &vecOther);
-			if (screenPos.z > 0) {
-				screenPos.y = (ImGui::GetIO().DisplaySize.y - screenPos.y);
-			}
+			screenPos.y = (ImGui::GetIO().DisplaySize.y - screenPos.y);
 
 			float distance = std::sqrtf((std::pow(*localXCord - vecOther.x, 2) +
 				std::pow(*localYCord - vecOther.y, 2) +

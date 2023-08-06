@@ -17,6 +17,7 @@ namespace utils {
 	void RemoveAllHooks();
 	void DestroyImGui();
 
+	bool isPtrInvalid(void* p);
 	uintptr_t FindDMAAddy(uintptr_t ptr, std::vector<unsigned int> offsets);
 	DWORD __stdcall EjectThread(LPVOID lpParameter);
 

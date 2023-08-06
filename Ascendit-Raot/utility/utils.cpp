@@ -54,7 +54,7 @@ DWORD __stdcall utils::EjectThread(LPVOID lpParameter) {
 	FreeLibraryAndExitThread(hModule, 0);
 }
 
-bool isPtrInvalid(void* p)
+bool utils::isPtrInvalid(void* p)
 {
 	MEMORY_BASIC_INFORMATION mbi = { 0 };
 	if (::VirtualQuery(p, &mbi, sizeof(mbi)))
